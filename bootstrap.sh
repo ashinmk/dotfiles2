@@ -1,4 +1,8 @@
 #!/bin/bash
-ln -s /ws/Dotfiles/src/Gauthamw_dotfiles/micro ~/.config/micro
-ln -s /ws/Dotfiles/src/Gauthamw_dotfiles/zshrc ~/.zshrc
-ln -s /ws/Dotfiles/src/Gauthamw_dotfiles/zshprofile ~/.zshprofile
+currentDir=$(pwd);
+ln -f -s "${currentDir}/zshrc" ~/.zshrc
+ln -f -s "${currentDir}/zshprofile" ~/.zshprofile
+
+for initFile in $(find . -name init.sh); do
+    source "$initFile";
+done;
