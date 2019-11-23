@@ -1,0 +1,1 @@
+ln -f -s "$(pwd)/dotconfig/powerlevel10k/p10k.zsh" ~/.p10k.zsh
