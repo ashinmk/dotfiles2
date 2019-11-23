@@ -1,0 +1,11 @@
+*.iml
+.idea
+.DS_Store
+/Library/
+/perl5/
+/Music/
+/Downloads/gradle-5.6.2
+Google Drive/Books
+Google Drive/Quiver.qvlibrary
+Google Drive/Alfred
+Google Drive/Alfred.alfredpreferences/
