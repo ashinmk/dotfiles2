@@ -47,3 +47,7 @@ source ~/.powerlevel10k/powerlevel10k.zsh-theme
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 source ~/.p10k.zsh
+
+function benchmark_zsh() {
+    for i in $(seq 1 10); do /usr/bin/time zsh -i -c exit; done
+}
