@@ -4,7 +4,7 @@ LC_ALL=en_US.UTF-8
 export PATH=/usr/local/bin:/usr/local/opt/coreutils/libexec/gnubin:/usr/local/opt/findutils/libexec/gnubin:/usr/local/opt/gnu-sed/libexec/gnubin:$HOME/.toolbox/bin:$PATH:/Users/gauthamw/Scripts/bin
 
 source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
-
+# source ~/.zsh-defer/zsh-defer.plugin.zsh
 
 setopt clobber              # Enables piping to existing files without warning
 setopt hist_ignore_all_dups # remove older duplicate entries from history
@@ -33,6 +33,11 @@ unalias rm 2>/dev/null
 for initFile in $HOME/.dotconfig/*/init.sh; do
     source "$initFile"
 done
+
+#for deferredInitFile in $HOME/.dotconfig/*/init.defer.sh; do
+#    echo "$deferredInitFile";
+#    zsh-defer source "$deferredInitFile"
+#done
 
 for aliasFile in $HOME/.dotconfig/*/aliases.sh; do
     source "$aliasFile"
