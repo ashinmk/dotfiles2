@@ -1,4 +1,4 @@
-PATH="${PATH}:${HOME}/.nvm/versions/node/v12.8.0/bin"
+PATH="${PATH}:${HOME}/.nvm/versions/node/$(cat ~/.nvm/alias/default)/bin"
 
 nvm() {
     export NVM_DIR="$HOME/.nvm"
