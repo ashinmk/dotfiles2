@@ -9,3 +9,5 @@ done;
 
 rm -rf ~/.dotconfig;
 ln -f -s "${currentDir}/dotconfig" ~/.dotconfig;
+rm -rf ~/.amazon.ext.dotconfig
+ln -f -s "${currentDir}/amazon.ext.dotconfig" ~/.amazon.ext.dotconfig;

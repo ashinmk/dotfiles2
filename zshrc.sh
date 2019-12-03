@@ -34,6 +34,10 @@ for initFile in $HOME/.dotconfig/*/init.sh; do
     source "$initFile"
 done
 
+for initFile in $HOME/.amazon.ext.dotconfig/*/init.sh; do
+    source "$initFile"
+done
+
 #for deferredInitFile in $HOME/.dotconfig/*/init.defer.sh; do
 #    echo "$deferredInitFile";
 #    zsh-defer source "$deferredInitFile"
