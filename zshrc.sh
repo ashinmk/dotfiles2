@@ -7,7 +7,7 @@ if [[ "$OSTYPE" == darwin* ]]; then
 else
     eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
 fi
-export PATH="/usr/local/opt/coreutils/libexec/gnubin:/usr/local/opt/findutils/libexec/gnubin:/usr/local/opt/gnu-sed/libexec/gnubin:$HOME/.toolbox/bin:$PATH"
+export PATH="${HOMEBREW_PREFIX}/opt/coreutils/libexec/gnubin:${HOMEBREW_PREFIX}/opt/findutils/libexec/gnubin:${HOMEBREW_PREFIX}/opt/gnu-sed/libexec/gnubin:$HOME/.toolbox/bin:$PATH"
 
 source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 # source ~/.zsh-defer/zsh-defer.plugin.zsh
