@@ -2,9 +2,10 @@ LC_CTYPE=en_US.UTF-8
 LC_ALL=en_US.UTF-8
 
 if [[ "$OSTYPE" == darwin* ]]; then
+    eval $(/usr/local/bin/brew shellenv)
     PATH="$PATH:/Users/gauthamw/Scripts/bin"
 else
-     eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+    eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
 fi
 export PATH="/usr/local/opt/coreutils/libexec/gnubin:/usr/local/opt/findutils/libexec/gnubin:/usr/local/opt/gnu-sed/libexec/gnubin:$HOME/.toolbox/bin:$PATH"
 
@@ -28,7 +29,7 @@ autoload -Uz copy-earlier-word
 zle -N copy-earlier-word
 bindkey "^[m" copy-earlier-word
 
-source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+source "${HOMEBREW_PREFIX}/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
 
 alias bb="brazil-build"
 unalias rm 2>/dev/null
