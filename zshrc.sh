@@ -38,7 +38,9 @@ source "${HOMEBREW_PREFIX}/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
 alias bb="brazil-build"
 unalias rm 2>/dev/null
 
-. /usr/local/etc/profile.d/z.sh
+if [[ -f /usr/local/etc/profile.d/z.sh ]]; then
+    source /usr/local/etc/profile.d/z.sh
+fi
 
 for initFile in $HOME/.dotconfig/*/init.sh; do
     source "$initFile"
