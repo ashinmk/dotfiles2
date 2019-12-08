@@ -1,7 +1,12 @@
 LC_CTYPE=en_US.UTF-8
 LC_ALL=en_US.UTF-8
 
-export PATH=/usr/local/bin:/usr/local/opt/coreutils/libexec/gnubin:/usr/local/opt/findutils/libexec/gnubin:/usr/local/opt/gnu-sed/libexec/gnubin:$HOME/.toolbox/bin:$PATH:/Users/gauthamw/Scripts/bin
+if [[ "$OSTYPE" == darwin* ]]; then
+    PATH="$PATH:/Users/gauthamw/Scripts/bin"
+else
+     eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+fi
+export PATH="/usr/local/opt/coreutils/libexec/gnubin:/usr/local/opt/findutils/libexec/gnubin:/usr/local/opt/gnu-sed/libexec/gnubin:$HOME/.toolbox/bin:$PATH"
 
 source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 # source ~/.zsh-defer/zsh-defer.plugin.zsh
