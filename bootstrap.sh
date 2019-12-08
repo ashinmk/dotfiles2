@@ -2,6 +2,7 @@
 currentDir=$(pwd);
 ln -f -s "${currentDir}/zshrc.sh" ~/.zshrc
 ln -f -s "${currentDir}/zprofile.sh" ~/.zprofile
+ln -f -s "${currentDir}/zpreztorc.sh" ~/.zpreztorc
 
 for bootstrapFile in $(find -L dotconfig -name bootstrap.sh); do
     source "$bootstrapFile";
