@@ -9,6 +9,10 @@ else
 fi
 export PATH="${HOMEBREW_PREFIX}/opt/coreutils/libexec/gnubin:${HOMEBREW_PREFIX}/opt/findutils/libexec/gnubin:${HOMEBREW_PREFIX}/opt/gnu-sed/libexec/gnubin:$HOME/.toolbox/bin:$PATH"
 
+if [[ -d "${HOMEBREW_PREFIX}/opt/grep/libexec/gnubin" ]]; then
+    export PATH="${HOMEBREW_PREFIX}/opt/grep/libexec/gnubin:$PATH"
+fi
+
 source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 # source ~/.zsh-defer/zsh-defer.plugin.zsh
 
