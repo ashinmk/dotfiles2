@@ -1,17 +1,9 @@
 LC_CTYPE=en_US.UTF-8
 LC_ALL=en_US.UTF-8
 
-if [[ "$OSTYPE" == darwin* ]]; then
-    eval $(/usr/local/bin/brew shellenv)
-    PATH="$PATH:/Users/gauthamw/Scripts/bin"
-else
-    eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
-fi
-export PATH="${HOMEBREW_PREFIX}/opt/coreutils/libexec/gnubin:${HOMEBREW_PREFIX}/opt/findutils/libexec/gnubin:${HOMEBREW_PREFIX}/opt/gnu-sed/libexec/gnubin:$HOME/.toolbox/bin:$PATH"
+source "${HOME}/.homebrew_init"
 
-if [[ -d "${HOMEBREW_PREFIX}/opt/grep/libexec/gnubin" ]]; then
-    export PATH="${HOMEBREW_PREFIX}/opt/grep/libexec/gnubin:$PATH"
-fi
+export PATH="${HOME}/Scripts/bin:${HOME}/.toolbox/bin:$PATH"
 
 source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 # source ~/.zsh-defer/zsh-defer.plugin.zsh
