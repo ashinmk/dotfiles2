@@ -1,4 +1,6 @@
+current_dir=${0:h}
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+[ -f "${current_dir}/catj-fzf.zsh" ] && source "${current_dir}/catj-fzf.zsh"
 
 fo() {
     local out file key
@@ -12,34 +14,56 @@ fo() {
 
 export FZF_DEFAULT_COMMAND="fd . $HOME"
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-export FZF_CD_COMMAND="fd -t d . $HOME"
-export FZF_CD_WS_COMMAND="fd -d 1 -t d . /ws/*/src"
-export FZF_CD_PWD_COMMAND="fd -t d ."
+
+fzf-select-lazy() {
+    local input_query="$1"
+    local expected_hotkeys="$2"
+    local input_data=$(eval $1)
+    fzf-select "${input_data}" "${expected_hotkeys}"
+    return $?
+}
+
+fzf-select() {
+    local input_data="$1"
+    local expected_hotkeys="$2"
+    if [[ -z "${expected_hotkeys}" ]]; then
+        local expected_hotkey_params=""
+    else
+        local expected_hotkey_params="--expect=\"${expected_hotkeys}\""
+    fi
+    query='echo "${input_data}" | FZF_DEFAULT_OPTS="--height ${FZF_TMUX_HEIGHT:-40%} --reverse $FZF_DEFAULT_OPTS $FZF_ALT_C_OPTS" fzf '${expected_hotkey_params}
+    local data="$(eval ${query})"
+    local return_value=$?
+    fzf_selected_text=$(head -2 <<<"$data" | tail -1)
+    fzf_selected_hotkey=$(head -1 <<<"$data")
+    return ${return_value}
+}
 
 fzf-cd() {
-    local dir="$(eval "$1" | FZF_DEFAULT_OPTS="--height ${FZF_TMUX_HEIGHT:-40%} --reverse $FZF_DEFAULT_OPTS $FZF_ALT_C_OPTS" $(__fzfcmd) +m)"
+    fzf-select-lazy "$1" "$2"
+    local dir=$fzf_selected_text
     if [[ -z "$dir" ]]; then
         zle redisplay
         return 0
     fi
     cd "$dir"
-    local ret=$?
+    local return_value=$?
     zle fzf-redraw-prompt
-    return $ret
+    return $return_value
 }
+
 # ALT-W - cd into /ws
 fzf-cd-ws-widget() {
-    fzf-cd "$FZF_CD_WS_COMMAND";
-    return $?;
+    fzf-cd "fd -d 1 -t d . /ws/*/src"
+    return $?
 }
 zle -N fzf-cd-ws-widget
 bindkey '\ew' fzf-cd-ws-widget
 
 # ALT-D - cd to current dir
 fzf-cd-pwd-widget() {
-    fzf-cd "$FZF_CD_PWD_COMMAND";
-    return $?;
+    fzf-cd "fd -t d ."
+    return $?
 }
 zle -N fzf-cd-pwd-widget
 bindkey '\ed' fzf-cd-pwd-widget
-
