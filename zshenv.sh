@@ -7,7 +7,10 @@
 
 ## Dev-Desktop -> Can't change shell by default so source zsh at launch.
 if [[ ($ZSH_VERSION == "4.3.11") && (-f /home/linuxbrew/.linuxbrew/bin/zsh) ]]; then
-    exec /home/linuxbrew/.linuxbrew/bin/zsh -l
+    if [[ (-o login) && (-o interactive) ]]; then
+        # Only source if this is a login and interactive shell. Avoid for scripts like rsync
+        exec /home/linuxbrew/.linuxbrew/bin/zsh -l
+    fi
 fi
 
 # Ensure that a non-login, non-interactive shell has a defined environment.
