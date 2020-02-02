@@ -1,0 +1,5 @@
+Alfred 4.app
+Dropzone 3.app
+IntelliJ IDEA.app
+Pocket.app
+Todoist.app
