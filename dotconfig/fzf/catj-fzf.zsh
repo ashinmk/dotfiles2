@@ -26,7 +26,7 @@ zle -N fzf-catj-pbp-widget
 bindkey '\ep' fzf-catj-pbp-widget
 
 fzf-catj-jq-widget() {
-    local query="pbp | ${___FZF_CATJ_FILTER}"
+    local query="$BUFFER | ${___FZF_CATJ_FILTER}"
     local catj_json="$(eval $query)"
     ___fzf-catj-jq-recursive-select "${catj_json}" ""
     BUFFER="$BUFFER | jq '{${catj_jq_selected_data}}'"
