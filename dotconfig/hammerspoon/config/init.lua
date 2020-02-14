@@ -1,3 +1,5 @@
+configloadingAlert = hs.alert.show("Loading HammerSpoon Config");
+
 config = {}
 
 config.applications = {
@@ -43,14 +45,11 @@ config.applications = {
     }
 }
 
-launch = function(app)
-    hs.application.launchOrFocusByBundleID(app.bundleID)
-end
-
 f20 = require 'f20';
-require 'f20_launchApps'
 
--- Reload HammerSpoon Config
-f20:bind({}, 'R', function()
-    hs.reload();
-end)
+require 'f20_general'
+require 'f20_launchApps'
+require 'f20_windowManagement'
+
+hs.alert.closeSpecific(configloadingAlert);
+hs.alert("Loaded HammerSpoon Config");
