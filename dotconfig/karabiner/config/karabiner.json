@@ -223,8 +223,43 @@
                                     }
                                 ],
                                 "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "f11"
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "volume_decrement"
+                                    }
+                                ],
+                                "conditions": [
+                                    {
+                                        "type": "variable_if",
+                                        "name": "fn_key_held_down",
+                                        "value": 1
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "f12"
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "volume_increment"
+                                    }
+                                ],
+                                "conditions": [
+                                    {
+                                        "type": "variable_if",
+                                        "name": "fn_key_held_down",
+                                        "value": 1
+                                    }
+                                ],
+                                "type": "basic"
                             }
-                            
                         ]
                     }
                 ]
