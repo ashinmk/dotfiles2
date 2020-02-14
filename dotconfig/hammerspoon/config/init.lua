@@ -20,6 +20,10 @@ config.applications = {
         f20Shortcut = 'm'
     },
     {
+        bundleID = 'com.toggl.toggldesktop.TogglDesktop',
+        f20Shortcut = 'tab'
+    },
+    {
         bundleID = 'com.microsoft.Outlook',
         f20Shortcut = 'o'
     },
