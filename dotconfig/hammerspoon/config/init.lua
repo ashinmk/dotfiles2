@@ -55,6 +55,7 @@ f20 = require 'f20';
 require 'f20_general'
 require 'f20_launchApps'
 require 'f20_windowManagement'
+require 'f20_outlook'
 
 hs.alert.closeSpecific(configloadingAlert);
 hs.alert("Loaded HammerSpoon Config");
