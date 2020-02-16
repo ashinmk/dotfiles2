@@ -48,7 +48,8 @@ config.applications = {
         f20Shortcut = 'k'
     }
 }
-
+require 'helpers';
+require 'applescript.helpers';
 f20 = require 'f20';
 
 require 'f20_general'
