@@ -6,7 +6,11 @@ end
 
 function runScript(fileName, args)
     local script = getScript(fileName, args);
-    return hs.osascript.applescript(script);
+    if string.match(fileName, ".applescript$") then
+        return hs.osascript.applescript(script);
+    elseif string.match(fileName, ".js$") then
+        return hs.osascript.javascript(script);
+    end
 end
 
 function getScript(fileName, args)

@@ -180,3 +180,7 @@ for _, record in pairs(folder_bindings) do
         action_bindings[binding.action](record, binding, targetModal);
     end
 end
+
+outlookModal:bind({"cmd"}, 'S', function()
+    runLocalScript('outlook_save_message.js', {});
+end)
