@@ -181,6 +181,6 @@ for _, record in pairs(folder_bindings) do
     end
 end
 
-outlookModal:bind({"cmd", "shift"}, 'S', function()
+outlookModal:bind({"cmd", "ctrl"}, 'S', function()
     runLocalScript('outlook_save_message.js', {});
 end)
