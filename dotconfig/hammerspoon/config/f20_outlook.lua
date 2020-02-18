@@ -19,7 +19,7 @@ local folder_bindings = {
         bindings = {
             {
                 action = 'navigate_to',
-                mods = {"cmd", "shift"},
+                mods = {"alt", "shift"},
                 key = 'I',
                 f20 = false
             }
@@ -31,7 +31,7 @@ local folder_bindings = {
         bindings = {
             {
                 action = 'navigate_to',
-                mods = {"cmd", "shift"},
+                mods = {"alt", "shift"},
                 key = 'D',
                 f20 = false
             }
@@ -43,7 +43,7 @@ local folder_bindings = {
         bindings = {
             {
                 action = 'navigate_to',
-                mods = {"cmd", "shift"},
+                mods = {"alt", "shift"},
                 key = 'S',
                 f20 = false
             }
@@ -55,7 +55,7 @@ local folder_bindings = {
         bindings = {
             {
                 action = 'navigate_to',
-                mods = {"cmd", "shift"},
+                mods = {"alt", "shift"},
                 key = '1',
                 f20 = false
             },
@@ -73,7 +73,7 @@ local folder_bindings = {
         bindings = {
             {
                 action = 'navigate_to',
-                mods = {"cmd", "shift"},
+                mods = {"alt", "shift"},
                 key = '2',
                 f20 = false
             },
@@ -91,7 +91,7 @@ local folder_bindings = {
         bindings = {
             {
                 action = 'navigate_to',
-                mods = {"cmd", "shift"},
+                mods = {"alt", "shift"},
                 key = '3',
                 f20 = false
             },
@@ -109,7 +109,7 @@ local folder_bindings = {
         bindings = {
             {
                 action = 'navigate_to',
-                mods = {"cmd", "shift"},
+                mods = {"alt", "shift"},
                 key = '4',
                 f20 = false
             },
@@ -127,7 +127,7 @@ local folder_bindings = {
         bindings = {
             {
                 action = 'navigate_to',
-                mods = {"cmd", "shift"},
+                mods = {"alt", "shift"},
                 key = '5',
                 f20 = false
             },
@@ -145,7 +145,7 @@ local folder_bindings = {
         bindings = {
             {
                 action = 'navigate_to',
-                mods = {"cmd", "shift"},
+                mods = {"alt", "shift"},
                 key = '6',
                 f20 = false
             }
