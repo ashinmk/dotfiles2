@@ -48,7 +48,7 @@ config.applications = {
         f20Shortcut = 'k'
     }
 }
-require 'helpers';
+require 'fs_helpers';
 require 'applescript.helpers';
 f20 = require 'f20';
 
@@ -57,5 +57,8 @@ require 'f20_launchApps'
 require 'f20_windowManagement'
 require 'f20_outlook'
 
+require 'wallpaper_control'
+
 hs.alert.closeSpecific(configloadingAlert);
 hs.alert("Loaded HammerSpoon Config");
+hs.console.clearConsole();

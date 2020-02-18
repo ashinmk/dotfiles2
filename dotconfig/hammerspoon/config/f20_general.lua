@@ -11,3 +11,7 @@ end)
 f20:bind({}, '\\', function()
     hs.alert(hs.application.frontmostApplication():name());
 end)
+
+f20:bind({"shift"}, '\\', function()
+    hs.alert(hs.application.frontmostApplication():bundleID());
+end)
