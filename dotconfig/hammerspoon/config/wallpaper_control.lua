@@ -106,9 +106,12 @@ local setPreviousWallpaper = function()
     end;
 end
 
-local setNextWallpaper = function()
+local setNextWallpaper = function(performSilent)
     if wallpaperConfig.currentWallpaperIndex == #wallpaperConfig.wallpapers then
-        local downloadingWallpaperAlert = hs.alert("Downloading new wallpaper", 30);
+        local downloadingWallpaperAlert;
+        if not performSilent then
+             downloadingWallpaperAlert = hs.alert("Downloading new wallpaper", 30);
+        end
         downloadAndChangeWallpaperFromUnsplash(function(_)
             hs.alert.closeSpecific(downloadingWallpaperAlert);
         end);
@@ -136,7 +139,7 @@ hs.hotkey.bind({'ctrl', 'shift'}, '[', function()
 end);
 
 hs.hotkey.bind({'ctrl', 'shift'}, ']', function()
-    setNextWallpaper();
+    setNextWallpaper(false);
 end);
 
 hs.hotkey.bind({'ctrl', 'shift'}, '\\', function()
@@ -144,3 +147,7 @@ hs.hotkey.bind({'ctrl', 'shift'}, '\\', function()
 end);
 
 ---------------------- End Hotkey Bindings
+
+hs.timer.doEvery(3600, function() 
+    setNextWallpaper(true);
+end);
