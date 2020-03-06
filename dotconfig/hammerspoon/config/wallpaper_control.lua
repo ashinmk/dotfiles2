@@ -36,7 +36,6 @@ loadConfig();
 
 ---------------------- End Init Resources
 
-
 ---------------------- Wallpaper Resource Access
 
 local changeWallpaperToFile = function(fileUrl)
@@ -106,14 +105,21 @@ local setPreviousWallpaper = function()
     end;
 end
 
+local downloadingWallpaperMutex = false
+
 local setNextWallpaper = function(performSilent)
     if wallpaperConfig.currentWallpaperIndex == #wallpaperConfig.wallpapers then
+        if downloadingWallpaperMutex then
+            return;
+        end
+        downloadingWallpaperMutex = true;
         local downloadingWallpaperAlert;
         if not performSilent then
              downloadingWallpaperAlert = hs.alert("Downloading new wallpaper", 30);
         end
         downloadAndChangeWallpaperFromUnsplash(function(_)
             hs.alert.closeSpecific(downloadingWallpaperAlert);
+            downloadingWallpaperMutex = false;
         end);
     else
         local wallpaperId = wallpaperConfig.wallpapers[wallpaperConfig.currentWallpaperIndex + 1];
@@ -128,7 +134,7 @@ local deleteCurrentWallpaper = function()
         deleteWallpaper(wallpaperConfig.wallpapers[wallpaperConfig.currentWallpaperIndex]);
         table.remove(wallpaperConfig.wallpapers, wallpaperConfig.currentWallpaperIndex);
         wallpaperConfig.currentWallpaperIndex = wallpaperConfig.currentWallpaperIndex - 1;
-        setNextWallpaper();
+        setNextWallpaper(false);
     end
 end
 
@@ -147,7 +153,6 @@ hs.hotkey.bind({'ctrl', 'shift'}, '\\', function()
 end);
 
 ---------------------- End Hotkey Bindings
-
 hs.timer.doEvery(3600, function() 
     setNextWallpaper(true);
 end);
