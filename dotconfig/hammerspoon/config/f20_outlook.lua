@@ -68,7 +68,7 @@ local folder_bindings = {
         }
     },
     {
-        folder = '2-Followup',
+        folder = '2-Soon',
         parentFolder = 'Inbox',
         bindings = {
             {
@@ -86,7 +86,7 @@ local folder_bindings = {
         }
     },
     {
-        folder = '3-Wait For Reply',
+        folder = '3-Eventually',
         parentFolder = 'Inbox',
         bindings = {
             {
