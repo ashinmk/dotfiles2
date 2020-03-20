@@ -1,6 +1,6 @@
 ---------------------- Begin Config
 
-local wallpaperDir = "/tmp/wallpapers";
+local wallpaperDir = os.getenv("HOME") .. "/.wallpapers";
 local configFilePath = wallpaperDir .. '/config.json';
 local wallpaperResourceDir = wallpaperDir .. "/img";
 local unsplashApiKey = readFileContents(os.getenv("HOME") .. "/.grw-priv/unsplashApiKey");
