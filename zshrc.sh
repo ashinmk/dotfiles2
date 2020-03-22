@@ -59,3 +59,5 @@ source ~/.p10k.zsh
 function benchmark_zsh() {
     for i in $(seq 1 10); do /usr/bin/time zsh -i -c exit; done
 }
+
+[ -s "/Users/gauthamw/.scm_breeze/scm_breeze.sh" ] && source "/Users/gauthamw/.scm_breeze/scm_breeze.sh"
