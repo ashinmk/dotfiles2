@@ -80,9 +80,9 @@ bindkey '\ec' fzf-cd-home-widget
 fzf-kill-process-widget() {
     local selectedApp;
     if [ "$UID" != "0" ]; then
-        selectedApp=$(ps -f -u $UID | sed 1d | awk '{print $2 " " $8}' | fzf)
+        selectedApp=$(ps -f -u $UID | sed 1d | awk '{print $2 " " substr($0, index($0, $8))}' | fzf)
     else
-        selectedApp=$(ps -ef | sed 1d | awk '{print $2 " " $8}' | fzf)
+        selectedApp=$(ps -ef | sed 1d | awk '{print $2 " " substr($0, index($0, $8))}' | fzf)
     fi;
     if [[ "x$selectedApp" != "x" ]]; then
         local pid=$(echo $selectedApp | awk '{print $1}');
