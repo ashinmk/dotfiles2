@@ -1,0 +1,3 @@
+tabGroup="$1"
+
+cat ~/.opentabs/tabgroups.config.json | jq ".\"$tabGroup\"[]" -r | xargs open

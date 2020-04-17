@@ -1,0 +1,1 @@
+cat ~/.opentabs/tabgroups.config.json | jq '. | keys[]' -r
