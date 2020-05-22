@@ -1,0 +1,1 @@
+tell application id "com.runningwithcrayons.Alfred" to run trigger "emoji-picker" in workflow "com.github.jsumners.alfred-emoji"

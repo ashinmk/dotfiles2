@@ -57,7 +57,7 @@ require 'f20_launchApps'
 require 'f20_windowManagement'
 require 'f20_outlook'
 require 'f20_volumeControl'
-
+require 'f20_alfredHelpers';
 require 'wallpaper_control'
 
 hs.alert.closeSpecific(configloadingAlert);
