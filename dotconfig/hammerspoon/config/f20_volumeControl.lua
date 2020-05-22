@@ -86,5 +86,5 @@ end
 
 -- Sound Status
 f20:bind({}, '\\', function()
-    hs.alert.show(getDeviceInfo(hs.audiodevice.defaultInputDevice()) .. "\n" .. getDeviceInfo(hs.audiodevice.defaultOutputDevice()));\
+    hs.alert.show(getDeviceInfo(hs.audiodevice.defaultInputDevice()) .. "\n" .. getDeviceInfo(hs.audiodevice.defaultOutputDevice()));
 end)
