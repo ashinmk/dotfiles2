@@ -14,3 +14,7 @@ f20:bind({'cmd', 'shift'}, '\\', function()
     hs.pasteboard.setContents(appInfo);
     hs.alert(appInfo);
 end)
+
+f20:bind({}, 'escape', function()
+    hs.caffeinate.startScreensaver();
+end)
