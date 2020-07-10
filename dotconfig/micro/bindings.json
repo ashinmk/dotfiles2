@@ -1,4 +1,5 @@
 {
+    "Alt-/": "lua:comment.comment",
     "CtrlG": "command-edit:help ",
     "CtrlR": "command-edit:replace "
 }
