@@ -61,3 +61,5 @@ function benchmark_zsh() {
 }
 
 [ -s "/Users/gauthamw/.scm_breeze/scm_breeze.sh" ] && source "/Users/gauthamw/.scm_breeze/scm_breeze.sh"
+
+[ -s `which docker` ] && export DOCKER_HOST=unix:///var/run/docker.sock;
