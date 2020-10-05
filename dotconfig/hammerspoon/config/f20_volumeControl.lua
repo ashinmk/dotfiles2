@@ -40,8 +40,8 @@ f20:bind({}, '=', function()
 end)
 
 local headPhoneIdentifier = "WH-1000XM3";
-local builtInInputIdentifier = "Built-in Microphone";
-local builtInOutputIdentifier = "Built-in Output";
+local builtInInputIdentifier = "MacBook Pro Microphone";
+local builtInOutputIdentifier = "MacBook Pro Speakers";
 
 -- Change Audio Device to Headphone
 f20:bind({}, '[', function()

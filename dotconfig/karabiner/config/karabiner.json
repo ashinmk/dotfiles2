@@ -63,7 +63,6 @@
                                     {
                                         "key_code": "f20"
                                     }
-                                    
                                 ],
                                 "to_after_key_up": [
                                     {
@@ -81,6 +80,13 @@
                         "description": "Fn Keys",
                         "manipulators": [
                             {
+                                "conditions": [
+                                    {
+                                        "name": "fn_key_held_down",
+                                        "type": "variable_if",
+                                        "value": 1
+                                    }
+                                ],
                                 "from": {
                                     "key_code": "f1"
                                 },
@@ -89,16 +95,16 @@
                                         "key_code": "display_brightness_decrement"
                                     }
                                 ],
-                                "conditions": [
-                                    {
-                                        "type": "variable_if",
-                                        "name": "fn_key_held_down",
-                                        "value": 1
-                                    }
-                                ],
                                 "type": "basic"
                             },
                             {
+                                "conditions": [
+                                    {
+                                        "name": "fn_key_held_down",
+                                        "type": "variable_if",
+                                        "value": 1
+                                    }
+                                ],
                                 "from": {
                                     "key_code": "f2"
                                 },
@@ -107,16 +113,16 @@
                                         "key_code": "display_brightness_increment"
                                     }
                                 ],
-                                "conditions": [
-                                    {
-                                        "type": "variable_if",
-                                        "name": "fn_key_held_down",
-                                        "value": 1
-                                    }
-                                ],
                                 "type": "basic"
                             },
                             {
+                                "conditions": [
+                                    {
+                                        "name": "fn_key_held_down",
+                                        "type": "variable_if",
+                                        "value": 1
+                                    }
+                                ],
                                 "from": {
                                     "key_code": "f5"
                                 },
@@ -125,16 +131,16 @@
                                         "key_code": "illumination_decrement"
                                     }
                                 ],
-                                "conditions": [
-                                    {
-                                        "type": "variable_if",
-                                        "name": "fn_key_held_down",
-                                        "value": 1
-                                    }
-                                ],
                                 "type": "basic"
                             },
                             {
+                                "conditions": [
+                                    {
+                                        "name": "fn_key_held_down",
+                                        "type": "variable_if",
+                                        "value": 1
+                                    }
+                                ],
                                 "from": {
                                     "key_code": "f6"
                                 },
@@ -143,16 +149,16 @@
                                         "key_code": "illumination_increment"
                                     }
                                 ],
-                                "conditions": [
-                                    {
-                                        "type": "variable_if",
-                                        "name": "fn_key_held_down",
-                                        "value": 1
-                                    }
-                                ],
                                 "type": "basic"
                             },
                             {
+                                "conditions": [
+                                    {
+                                        "name": "fn_key_held_down",
+                                        "type": "variable_if",
+                                        "value": 1
+                                    }
+                                ],
                                 "from": {
                                     "key_code": "f7"
                                 },
@@ -161,16 +167,16 @@
                                         "key_code": "rewind"
                                     }
                                 ],
-                                "conditions": [
-                                    {
-                                        "type": "variable_if",
-                                        "name": "fn_key_held_down",
-                                        "value": 1
-                                    }
-                                ],
                                 "type": "basic"
                             },
                             {
+                                "conditions": [
+                                    {
+                                        "name": "fn_key_held_down",
+                                        "type": "variable_if",
+                                        "value": 1
+                                    }
+                                ],
                                 "from": {
                                     "key_code": "f8"
                                 },
@@ -179,16 +185,16 @@
                                         "key_code": "play_or_pause"
                                     }
                                 ],
-                                "conditions": [
-                                    {
-                                        "type": "variable_if",
-                                        "name": "fn_key_held_down",
-                                        "value": 1
-                                    }
-                                ],
                                 "type": "basic"
                             },
                             {
+                                "conditions": [
+                                    {
+                                        "name": "fn_key_held_down",
+                                        "type": "variable_if",
+                                        "value": 1
+                                    }
+                                ],
                                 "from": {
                                     "key_code": "f9"
                                 },
@@ -197,16 +203,16 @@
                                         "key_code": "fastforward"
                                     }
                                 ],
-                                "conditions": [
-                                    {
-                                        "type": "variable_if",
-                                        "name": "fn_key_held_down",
-                                        "value": 1
-                                    }
-                                ],
                                 "type": "basic"
                             },
                             {
+                                "conditions": [
+                                    {
+                                        "name": "fn_key_held_down",
+                                        "type": "variable_if",
+                                        "value": 1
+                                    }
+                                ],
                                 "from": {
                                     "key_code": "f10"
                                 },
@@ -215,16 +221,16 @@
                                         "key_code": "mute"
                                     }
                                 ],
-                                "conditions": [
-                                    {
-                                        "type": "variable_if",
-                                        "name": "fn_key_held_down",
-                                        "value": 1
-                                    }
-                                ],
                                 "type": "basic"
                             },
                             {
+                                "conditions": [
+                                    {
+                                        "name": "fn_key_held_down",
+                                        "type": "variable_if",
+                                        "value": 1
+                                    }
+                                ],
                                 "from": {
                                     "key_code": "f11"
                                 },
@@ -233,29 +239,22 @@
                                         "key_code": "volume_decrement"
                                     }
                                 ],
-                                "conditions": [
-                                    {
-                                        "type": "variable_if",
-                                        "name": "fn_key_held_down",
-                                        "value": 1
-                                    }
-                                ],
                                 "type": "basic"
                             },
                             {
+                                "conditions": [
+                                    {
+                                        "name": "fn_key_held_down",
+                                        "type": "variable_if",
+                                        "value": 1
+                                    }
+                                ],
                                 "from": {
                                     "key_code": "f12"
                                 },
                                 "to": [
                                     {
                                         "key_code": "volume_increment"
-                                    }
-                                ],
-                                "conditions": [
-                                    {
-                                        "type": "variable_if",
-                                        "name": "fn_key_held_down",
-                                        "value": 1
                                     }
                                 ],
                                 "type": "basic"
@@ -272,6 +271,19 @@
                         "is_keyboard": true,
                         "is_pointing_device": false,
                         "product_id": 630,
+                        "vendor_id": 1452
+                    },
+                    "ignore": false,
+                    "manipulate_caps_lock_led": true,
+                    "simple_modifications": []
+                },
+                {
+                    "disable_built_in_keyboard_if_exists": false,
+                    "fn_function_keys": [],
+                    "identifiers": {
+                        "is_keyboard": true,
+                        "is_pointing_device": false,
+                        "product_id": 34304,
                         "vendor_id": 1452
                     },
                     "ignore": false,

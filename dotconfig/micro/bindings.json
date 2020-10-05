@@ -1,5 +1,6 @@
 {
     "Alt-/": "lua:comment.comment",
     "CtrlG": "command-edit:help ",
-    "CtrlR": "command-edit:replace "
+    "CtrlR": "command-edit:replace ",
+    "CtrlUnderscore": "lua:comment.comment"
 }
