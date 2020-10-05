@@ -11,13 +11,23 @@ config.alfredTriggers = {
         trigger = 'open-app',
         arg = 'alfred',
         workflow = 'dev.gauthamw.open-stuff',
-        f20Shortcut = 'a'
+        f20Shortcut = 'a',
+        postTrigger = function()
+            hs.eventtap.keyStroke({}, "return")
+        end
+    },
+    {
+        trigger = 'open-app',
+        arg = 'slack',
+        workflow = 'dev.gauthamw.open-stuff',
+        f20Shortcut = 'm'
     },
     {
         trigger = 'open-app',
         arg = 'outlook',
         workflow = 'dev.gauthamw.open-stuff',
-        f20Shortcut = 'o'
+        f20Shortcut = 'm',
+        f20Modifiers = {'cmd'}
     },
     {
         trigger = 'open-app',
@@ -41,7 +51,8 @@ config.alfredTriggers = {
         trigger = 'open-app',
         arg = 'chime',
         workflow = 'dev.gauthamw.open-stuff',
-        f20Shortcut = 'm'
+        f20Shortcut = 'm',
+        f20Modifiers = {'shift'}
     },
     {
         trigger = 'open-app',
@@ -80,6 +91,11 @@ for _, alfredTrigger in pairs(config.alfredTriggers) do
         modifiers = alfredTrigger.f20Modifiers;
     end
     if alfredTrigger.f20Shortcut then
-        f20:bind(modifiers, alfredTrigger.f20Shortcut, function() triggerAlfredWorkflow(alfredTrigger.trigger, alfredTrigger.workflow, alfredTrigger.arg) end)
+        f20:bind(modifiers, alfredTrigger.f20Shortcut, function()
+            triggerAlfredWorkflow(alfredTrigger.trigger, alfredTrigger.workflow, alfredTrigger.arg)
+            if alfredTrigger.postTrigger then
+                alfredTrigger.postTrigger()
+            end
+        end)
     end
 end
