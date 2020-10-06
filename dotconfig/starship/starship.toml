@@ -1,0 +1,18 @@
+add_newline = false
+
+format = """
+$hostname\
+$directory\
+$git_branch\
+$git_commit\
+$git_state\
+$git_status\
+$memory_usage\
+$aws\
+$env_var\
+$custom\
+$jobs\
+$battery\
+$time\
+$status\
+$character"""

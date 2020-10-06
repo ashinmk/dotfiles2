@@ -5,9 +5,6 @@ source "${HOME}/.homebrew_init"
 
 export PATH="${HOME}/Scripts/bin:${HOME}/.toolbox/bin:$PATH"
 
-source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
-# source ~/.zsh-defer/zsh-defer.plugin.zsh
-
 setopt clobber              # Enables piping to existing files without warning
 setopt hist_ignore_all_dups # remove older duplicate entries from history
 setopt hist_reduce_blanks   # remove superfluous blanks from history items
@@ -16,8 +13,12 @@ setopt share_history        # share history between different instances of the s
 setopt autocd               # Giving a dir makes it cd to the same
 setopt rmstarsilent
 
-autoload -U promptinit
-promptinit
+autoload -Uz compinit
+if [ $(date +'%j') != $(/usr/bin/stat -f '%Sm' -t '%j' ${ZDOTDIR:-$HOME}/.zcompdump) ]; then
+  compinit
+else
+  compinit -C
+fi
 
 source "${HOME}/.iterm2_shell_integration.zsh"
 
@@ -28,11 +29,6 @@ bindkey "^[m" copy-earlier-word
 source "${HOMEBREW_PREFIX}/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
 
 alias bb="brazil-build"
-unalias rm 2>/dev/null
-
-if [[ -f /usr/local/etc/profile.d/z.sh ]]; then
-    source /usr/local/etc/profile.d/z.sh
-fi
 
 for initFile in $HOME/.dotconfig/*/init.sh; do
     source "$initFile"
@@ -42,22 +38,12 @@ for initFile in $HOME/.amazon.ext.dotconfig/*/init.sh; do
     source "$initFile"
 done
 
-#for deferredInitFile in $HOME/.dotconfig/*/init.defer.sh; do
-#    echo "$deferredInitFile";
-#    zsh-defer source "$deferredInitFile"
-#done
-
 for aliasFile in $HOME/.dotconfig/*/aliases.sh; do
     source "$aliasFile"
 done
 
-source ~/.powerlevel10k/powerlevel10k.zsh-theme
-
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-source ~/.p10k.zsh
+eval "$(starship init zsh)"
 
 function benchmark_zsh() {
     hyperfine -w 3 "zsh -i -c exit;";
 }
-
-[ -s "/Users/gauthamw/.scm_breeze/scm_breeze.sh" ] && source "/Users/gauthamw/.scm_breeze/scm_breeze.sh"
