@@ -14,11 +14,13 @@ setopt autocd               # Giving a dir makes it cd to the same
 setopt rmstarsilent
 
 autoload -Uz compinit
-if [ $(date +'%j') != $(/usr/bin/stat -f '%Sm' -t '%j' ${ZDOTDIR:-$HOME}/.zcompdump) ]; then
-  compinit
+_comp_files=(${ZDOTDIR:-$HOME}/.zcompdump(Nm-20))
+if (( $#_comp_files )); then
+  compinit -i -C
 else
-  compinit -C
+  compinit -i
 fi
+unset _comp_files
 
 source "${HOME}/.iterm2_shell_integration.zsh"
 
