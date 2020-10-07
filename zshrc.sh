@@ -44,8 +44,12 @@ for aliasFile in $HOME/.dotconfig/*/aliases.sh; do
     source "$aliasFile"
 done
 
-eval "$(starship init zsh)"
+# eval "$(starship init zsh)" ## ORIGINAL
+
+# source <("/usr/local/bin/starship" init zsh --print-full-init)  ## Generated Wrapper
+[[ -f ${HOME}/.starship-init.sh  ]] || (starship init zsh --print-full-init > ${HOME}/.starship-init.sh);
+source ${HOME}/.starship-init.sh;
 
 function benchmark_zsh() {
-    hyperfine -w 3 "zsh -i -c exit;";
+    hyperfine -w 5 "zsh -i -c exit;";
 }
