@@ -27,7 +27,7 @@ config.alfredTriggers = {
         arg = 'outlook',
         workflow = 'dev.gauthamw.open-stuff',
         f20Shortcut = 'm',
-        f20Modifiers = {'cmd'}
+        f20Modifiers = {'shift'}
     },
     {
         trigger = 'open-app',
@@ -52,7 +52,7 @@ config.alfredTriggers = {
         arg = 'chime',
         workflow = 'dev.gauthamw.open-stuff',
         f20Shortcut = 'm',
-        f20Modifiers = {'shift'}
+        f20Modifiers = {'alt'}
     },
     {
         trigger = 'open-app',
