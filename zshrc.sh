@@ -47,9 +47,10 @@ done
 # eval "$(starship init zsh)" ## ORIGINAL
 
 # source <("/usr/local/bin/starship" init zsh --print-full-init)  ## Generated Wrapper
-[[ -f ${HOME}/.starship-init.sh  ]] || (starship init zsh --print-full-init > ${HOME}/.starship-init.sh);
+# [[ -f ${HOME}/.starship-init.sh  ]] || (starship init zsh --print-full-init > ${HOME}/.starship-init.sh);
 source ${HOME}/.starship-init.sh;
 
 function benchmark_zsh() {
-    hyperfine -w 5 "zsh -i -c exit;";
+    hyperfine -w 20 -r 50 "zsh -i -c exit;";
 }
+#source ~/.zsh-prompt-benchmark/zsh-prompt-benchmark.plugin.zsh
