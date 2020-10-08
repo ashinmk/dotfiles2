@@ -8,15 +8,27 @@
 # ever drawn once (for the prompt immediately after it is run).
 
 zmodload zsh/parameter  # Needed to access jobstates variable for NUM_JOBS
-zmodload zsh/datetime   # Needed to access time for computing shell-time
-zmodload zsh/mathfunc   # Needed to convert float to int
 
 starship_render() {
     # Use length of jobstates array as number of jobs. Expansion fails inside
     # quotes so we set it here and then use the value later on.
     NUM_JOBS=$#jobstates
-    PROMPT="$("/usr/local/bin/starship" prompt --keymap="${KEYMAP-}" --status=$STATUS --cmd-duration=${STARSHIP_DURATION-} --jobs="$NUM_JOBS")"
+    PROMPT="$(starship prompt --keymap="${KEYMAP-}" --status=$STATUS --cmd-duration=${STARSHIP_DURATION-} --jobs="$NUM_JOBS")"
 }
+
+# Defines a function `__starship_get_time` that sets the time since epoch in millis in STARSHIP_CAPTURED_TIME.
+if [[ $ZSH_VERSION == ([1-4]*) ]]; then
+    # ZSH <= 5; Does not have a built-in variable so we will rely on Starship's inbuilt time function.
+    __starship_get_time() {
+        STARSHIP_CAPTURED_TIME=$(starship time)
+    }
+else
+    zmodload zsh/datetime
+    zmodload zsh/mathfunc
+    __starship_get_time() {
+        ((STARSHIP_CAPTURED_TIME = int(rint($EPOCHREALTIME * 1000))))
+    }
+fi
 
 # Will be run before every prompt draw
 starship_precmd() {
@@ -26,8 +38,8 @@ starship_precmd() {
     # Compute cmd_duration, if we have a time to consume, otherwise clear the
     # previous duration
     if [[ -n "${STARSHIP_START_TIME+1}" ]]; then
-        ((STARSHIP_END_TIME = int(rint($EPOCHREALTIME * 1000))));
-        ((STARSHIP_DURATION = STARSHIP_END_TIME - STARSHIP_START_TIME));
+        __starship_get_time && STARSHIP_END_TIME=$STARSHIP_CAPTURED_TIME
+        ((STARSHIP_DURATION = STARSHIP_END_TIME - STARSHIP_START_TIME))
         unset STARSHIP_START_TIME
     else
         unset STARSHIP_DURATION
@@ -37,7 +49,7 @@ starship_precmd() {
     starship_render
 }
 starship_preexec() {
-    ((STARSHIP_START_TIME = int(rint($EPOCHREALTIME * 1000))));
+    __starship_get_time && STARSHIP_START_TIME=$STARSHIP_CAPTURED_TIME
 }
 
 # If precmd/preexec arrays are not already set, set them. If we don't do this,
@@ -61,10 +73,13 @@ zle-keymap-select() {
     zle reset-prompt
 }
 
-((STARSHIP_START_TIME = int(rint($EPOCHREALTIME * 1000))));
-#STARSHIP_START_TIME=$("/usr/local/bin/starship" time)
+__starship_get_time && STARSHIP_START_TIME=$STARSHIP_CAPTURED_TIME
+
 zle -N zle-keymap-select
 export STARSHIP_SHELL="zsh"
 
 # Set up the session key that will be used to store logs
-export STARSHIP_SESSION_KEY="$RANDOM$RANDOM$RANDOM$RANDOM";
+# Set up the session key that will be used to store logs
+STARSHIP_SESSION_KEY="$RANDOM$RANDOM$RANDOM$RANDOM$RANDOM"; # Random generates a number b/w 0 - 32767
+STARSHIP_SESSION_KEY="${STARSHIP_SESSION_KEY}0000000000000000" # Pad it to 16+ chars.
+export STARSHIP_SESSION_KEY=${STARSHIP_SESSION_KEY:0:16}; # Trim to 16-digits if excess.
