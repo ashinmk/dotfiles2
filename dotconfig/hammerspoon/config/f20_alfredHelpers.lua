@@ -18,6 +18,12 @@ config.alfredTriggers = {
     },
     {
         trigger = 'open-app',
+        arg = 'discord',
+        workflow = 'dev.gauthamw.open-stuff',
+        f20Shortcut = 'd'
+    },
+    {
+        trigger = 'open-app',
         arg = 'slack',
         workflow = 'dev.gauthamw.open-stuff',
         f20Shortcut = 'm'
