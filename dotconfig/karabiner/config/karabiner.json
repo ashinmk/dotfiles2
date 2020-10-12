@@ -399,6 +399,63 @@
                                 "type": "basic"
                             }
                         ]
+                    },
+                    {
+                        "description": "Disable Cmd+Opt+P",
+                        "manipulators": [
+                            {
+                                "conditions": [
+                                    {
+                                        "bundle_identifiers": [
+                                            "^com\\.jetbrains\\.intellij$"
+                                        ],
+                                        "type": "frontmost_application_unless"
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "p",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "command",
+                                            "option"
+                                        ]
+                                    }
+                                },
+                                "to": [],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "bundle_identifiers": [
+                                            "^com\\.jetbrains\\.intellij$"
+                                        ],
+                                        "type": "frontmost_application_if"
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "p",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "command",
+                                            "option"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "p",
+                                        "modifiers": [
+                                            "right_shift",
+                                            "right_command",
+                                            "right_control",
+                                            "right_option"
+                                        ]
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
                     }
                 ]
             },
