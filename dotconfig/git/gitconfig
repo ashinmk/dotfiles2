@@ -15,7 +15,7 @@
 	ca = commit -a
 	caa = commit -a --amend
 	c = commit
-	hmm = "log -10 --format=\"format:%Cred[%h] %Cgreen[%an] %Cblue{%ar}:%Creset %s\""
+	hmm = "log -10 --format=\"format:%Cred[%h] %Cgreen[%an] %Cblue{%ar}:%Creset %s %Cred%d\""
 	st = status
 	cp = cherry-pick
 [pull]
