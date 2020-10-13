@@ -24,3 +24,13 @@ fzf-git-rebase-interactive() {
 
 zle -N fzf-git-rebase-interactive;
 bindkey '\egr' fzf-git-rebase-interactive;
+
+fzf-git-diff() {
+    local selectedFile;
+    selectedFile=$(git diff --name-only | fzf --preview 'git diff {}');
+    [[ -z "$selectedFile" ]] || git diff "$selectedFile";
+    zle reset-prompt;
+}
+
+zle -N fzf-git-diff;
+bindkey '\egd' fzf-git-diff;
