@@ -17,3 +17,7 @@ $time\
 $status\
 $line_break\
 $character"""
+
+
+[hostname]
+trim_at = "-gauthamw"
