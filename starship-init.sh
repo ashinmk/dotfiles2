@@ -73,6 +73,13 @@ zle-keymap-select() {
     zle reset-prompt
 }
 
+zle-line-finish() {
+    export STARSHIP_CONFIG="$HOME/.config/starship.transient.toml" && starship_render && unset STARSHIP_CONFIG;
+    zle reset-prompt;
+}
+
+zle -N zle-line-finish;
+
 __starship_get_time && STARSHIP_START_TIME=$STARSHIP_CAPTURED_TIME
 
 zle -N zle-keymap-select
