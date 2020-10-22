@@ -1,12 +1,32 @@
 fzf-git-change-branch() {
-    local selectedBranch;
-    selectedBranch=$(git br | tr -d '*' | tr -d '[:blank:]' | fzf --preview 'git hmm --color {}'  --preview-window right:70%);
-    [[ -z "$selectedBranch" ]] || git co "$selectedBranch";
+    local out;
+    out=$(git br | tr -d '*' | tr -d '[:blank:]' | fzf --preview 'git hmm --color {}'  --preview-window right:70% --expect=alt-d);
+    local selectedBranch altCommand;
+    altCommand=$(head -1 <<<"$out");
+    selectedBranch=$(head -2 <<<"$out" | tail -1);
+    if [[ ! -z "$selectedBranch" ]]; then
+        if [[ "$altCommand" = "alt-d" ]]; then
+            BUFFER="git br -D \"$selectedBranch\""
+        else
+            BUFFER="git co \"$selectedBranch\""
+        fi;
+        zle accept-line;
+    fi
     zle reset-prompt;
 }
 
 zle -N fzf-git-change-branch;
 bindkey '\egb' fzf-git-change-branch;
+
+fzf-git-change-branch-remote() {
+    local selectedBranch;
+    selectedBranch=$(git br -r | tr -d '*' | tr -d '[:blank:]' | fzf --preview 'git hmm --color {}'  --preview-window right:70%);
+    [[ -z "$selectedBranch" ]] || git co "$selectedBranch";
+    zle reset-prompt;
+}
+
+zle -N fzf-git-change-branch-remote;
+bindkey '\egB' fzf-git-change-branch-remote;
 
 show-git-status() {
     git status;
