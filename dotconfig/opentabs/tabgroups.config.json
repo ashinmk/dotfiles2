@@ -1,6 +1,7 @@
 {
     "SWA Open Tickets": [
         "https://tt.amazon.com/search?status=Assigned%3BResearching%3BWork+In+Progress%3BPending&assigned_group=CCT-ShipmentManagement&search=1#",
+        "https://tt.amazon.com/search?status=Assigned%3BResearching%3BWork+In+Progress%3BPending&assigned_group=ATS%20LTL&search=1#",
         "https://tt.amazon.com/search?status=Assigned%3BResearching%3BWork+In+Progress%3BPending&assigned_group=SWA-Billing%20and%20Payments&search=1#",
         "https://tt.amazon.com/search?status=Assigned%3BResearching%3BWork+In+Progress%3BPending&assigned_group=SWA-FulfillmentSystems&search=1#",
         "https://tt.amazon.com/search?status=Assigned%3BResearching%3BWork+In+Progress%3BPending&assigned_group=SWA-API&search=1#",
