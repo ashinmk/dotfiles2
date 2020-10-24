@@ -5,19 +5,20 @@ if [[ ! -z "$node_alias_not_updated_recently" ]]; then
     node_version_to_use="$my_last_known_node_version";
 else
     node_version_in_alias=$(cat ~/.nvm/alias/default);
-    if [[ $my_last_known_node_version = $node_version_in_alias ]]; then
-        touch -d "48 hours ago" ~/.nvm/alias/default;
-    else
-        echo "NVM version out of sync; Needs update. New Version: $node_version_in_alias";
+    if [[ ! $my_last_known_node_version = $node_version_in_alias ]]; then
+        local nvm_script_path;
+        nvm_script_path="$0:A";
+        sed -i 's/'"$my_last_known_node_version"'/'"$node_version_in_alias"'/g' "$nvm_script_path";
+        echo "NVM version out of sync; Updated from $my_last_known_node_version to  $node_version_in_alias";
     fi
+    touch -d "48 hours ago" ~/.nvm/alias/default;
     node_version_to_use="$node_version_in_alias";
     unset node_version_in_alias;
 fi;
 unset node_alias_not_updated_recently;
 unset my_last_known_node_version;
 
-
-PATH="${PATH}:${HOME}/.nvm/versions/node/$node_version_to_use/bin"
+export PATH="${PATH}:${HOME}/.nvm/versions/node/$node_version_to_use/bin"
 unset node_version_to_use;
 
 nvm() {
