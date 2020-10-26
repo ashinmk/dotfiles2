@@ -22,11 +22,8 @@ else
 fi
 unset _comp_files
 
+iterm2_hostname=${HOST}; # Remove if we'll ever start modifying $HOST.
 source "${HOME}/.iterm2_shell_integration.zsh"
-
-autoload -Uz copy-earlier-word
-zle -N copy-earlier-word
-bindkey "^[m" copy-earlier-word
 
 source "${HOMEBREW_PREFIX}/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
 
