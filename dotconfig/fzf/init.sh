@@ -2,17 +2,17 @@ current_dir=${0:h}
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 [ -f "${current_dir}/catj-fzf.zsh" ] && source "${current_dir}/catj-fzf.zsh"
 
-fo() {
+fzf-file-select() {
     local out file key
-    IFS=$'\n' out=("$(fzf-tmux --query="$1" --exit-0 --expect=ctrl-o,ctrl-e)")
-    key=$(head -1 <<<"$out")
-    file=$(head -2 <<<"$out" | tail -1)
-    if [ -n "$file" ]; then
-        [ "$key" = ctrl-o ] && open "$file" || ${EDITOR:-vim} "$file"
-    fi
+    out=$(fd -t f | fzf --bind 'alt-e:execute-silent('$EDITOR' {})+abort,alt-v:execute-silent(code {})+abort');
+    if [[ ! -z "$out" ]]; then
+        BUFFER="${LBUFFER}$out${RBUFFER}";
+    fi;
 }
+zle -N fzf-file-select;
+bindkey '\et' fzf-file-select;
 
-export FZF_DEFAULT_COMMAND="fd . $HOME"
+export FZF_DEFAULT_COMMAND="fd"
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
 fzf-select-lazy() {
@@ -60,21 +60,29 @@ fzf-cd-ws-widget() {
 zle -N fzf-cd-ws-widget
 bindkey '\ew' fzf-cd-ws-widget
 
-# ALT-D - cd inside current dir
+# ALT-W - cd into Candybar
+fzf-cd-candybar-widget() {
+    fzf-cd "fd -t d -d 1 . $HOME/Candybar"
+    return $?
+}
+zle -N fzf-cd-candybar-widget
+bindkey '\eW' fzf-cd-candybar-widget
+
+# ALT-c - cd inside current dir
 fzf-cd-pwd-widget() {
     fzf-cd "fd -t d ."
     return $?
 }
 zle -N fzf-cd-pwd-widget
-bindkey '\ed' fzf-cd-pwd-widget
+bindkey '\ec' fzf-cd-pwd-widget
 
-# ALT-D - cd inside current dir
+# ALT-C - cd inside home
 fzf-cd-home-widget() {
     fzf-cd "fd -t d . -p \"$HOME\""
     return $?
 }
 zle -N fzf-cd-home-widget
-bindkey '\ec' fzf-cd-home-widget
+bindkey '\eC' fzf-cd-home-widget
 
 
 fzf-kill-process-widget() {
