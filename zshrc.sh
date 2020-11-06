@@ -12,6 +12,7 @@ setopt inc_append_history   # save history entries as soon as they are entered
 setopt share_history        # share history between different instances of the shell
 setopt autocd               # Giving a dir makes it cd to the same
 setopt rmstarsilent
+setopt interactive_comments # Allow comments in shell
 
 autoload -Uz compinit
 _comp_files=(${ZDOTDIR:-$HOME}/.zcompdump(Nm-20))
