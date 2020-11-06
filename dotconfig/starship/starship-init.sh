@@ -90,6 +90,7 @@ fi
 
 zle-line-finish() {
     export STARSHIP_CONFIG="$HOME/.config/starship.transient.toml" && starship_render && unset STARSHIP_CONFIG;
+    export RPROMPT="";
     zle reset-prompt;
 }
 
