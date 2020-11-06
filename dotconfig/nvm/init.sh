@@ -7,17 +7,18 @@ function setup_node_path_helper() {
 
 [[ -f ${node_path_helper_location} ]] || setup_node_path_helper;
 
-local node_alias_not_updated_recently=(~/.nvm/alias/default(Nm+1));
-if [[ -z "$node_alias_not_updated_recently" ]]; then
+local node_alias_updated_recently=(~/.nvm/alias/default(Nm-1)); # Updated in the last 1 day.
+if [[ ! -z "$node_alias_updated_recently" ]]; then
+    # Updated recently.
     setup_node_path_helper;
-    touch -d "48 hours ago" ~/.nvm/alias/default; 
+    touch -d "48 hours ago" ~/.nvm/alias/default;
 fi;
 
-source "$node_path_helper_location"; 
+source "$node_path_helper_location";
 
 nvm() {
     export NVM_DIR="$HOME/.nvm"
-    source "${NVM_DIR}/nvm.sh"
+    source /usr/local/opt/nvm/nvm.sh
 
     nvm "$@" # invoke the real nvm function now
 }
