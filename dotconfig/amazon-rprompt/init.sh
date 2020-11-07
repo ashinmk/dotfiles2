@@ -20,7 +20,7 @@ precmd_functions+=(setup_rprompt_for_amazon)
 function setup_nds_monitor_script() {
     echo 'while true; do
         touch "/tmp/.nds-monitor-running";
-        nds_running=$(ps -f | rg ninja | rg -v rg);
+        nds_running=$(ps -eaf | rg ninja-dev-sync | rg -v rg);
         if [[ ! -z "$nds_running" ]]; then
             touch "/tmp/.nds-running";
         fi;
