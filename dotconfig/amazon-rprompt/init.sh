@@ -19,6 +19,7 @@ precmd_functions+=(setup_rprompt_for_amazon)
 
 function setup_nds_monitor_script() {
     echo 'while true; do
+        touch "/tmp/.nds-monitor-running";
         nds_running=$(ps -f | rg ninja | rg -v rg);
         if [[ ! -z "$nds_running" ]]; then
             touch "/tmp/.nds-running";
@@ -31,9 +32,14 @@ function setup_nds_monitor_script() {
 
 [[ -f "$HOME/.nds-monitor.sh" ]] || setup_nds_monitor_script;
 
+##  Always start NDS Monitor if not running
+local nds_monitor_running=(/tmp/.nds-monitor-running(Nms-10));
+if [[ -z "$nds_monitor_running" ]]; then
+    (nohup "$HOME/.nds-monitor.sh" > /tmp/nds-monitor.out 2>&1 &) 2>&1
+fi;
+
 function start_nds() {
     (nohup ninja-dev-sync > /tmp/ninja-dev-sync.out 2>&1 &) 2>&1
-    (nohup "$HOME/.nds-monitor.sh" > /tmp/nds-monitor.out 2>&1 &) 2>&1
 }
 
 function auth() {
