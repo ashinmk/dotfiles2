@@ -51,3 +51,12 @@ fzf-git-diff() {
 
 zle -N fzf-git-diff;
 bindkey '\egd' fzf-git-diff;
+
+
+zle-git-hmm() {
+    BUFFER="git hmm";
+    zle accept-line;
+}
+
+zle -N zle-git-hmm;
+bindkey '\egh' zle-git-hmm;
