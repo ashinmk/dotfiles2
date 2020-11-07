@@ -68,3 +68,11 @@ fzf-git-add() {
 
 zle -N fzf-git-add;
 bindkey '\ega' fzf-git-add;
+
+fzf-git-unstage() {
+    local selectedFiles=$(git diff --cached --name-only | fzf -m --preview 'git diff {}' | paste -s -d ' ');
+    [[ -z "$selectedFiles" ]] || BUFFER="git restore --staged $selectedFiles" && zle accept-line;
+}
+
+zle -N fzf-git-unstage;
+bindkey '\egA' fzf-git-unstage;
