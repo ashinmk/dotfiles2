@@ -60,3 +60,11 @@ zle-git-hmm() {
 
 zle -N zle-git-hmm;
 bindkey '\egh' zle-git-hmm;
+
+fzf-git-add() {
+    local selectedFiles=$(git diff --name-only | fzf -m --preview 'git diff {}' | paste -s -d ' ');
+    [[ -z "$selectedFiles" ]] || BUFFER="git add $selectedFiles" && zle accept-line;
+}
+
+zle -N fzf-git-add;
+bindkey '\ega' fzf-git-add;
