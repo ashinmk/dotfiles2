@@ -5,14 +5,14 @@ source "${HOME}/.homebrew_init"
 
 export PATH="${HOME}/Scripts/bin:${HOME}/.toolbox/bin:$PATH"
 
-setopt clobber              # Enables piping to existing files without warning
-setopt hist_ignore_all_dups # remove older duplicate entries from history
-setopt hist_reduce_blanks   # remove superfluous blanks from history items
-setopt inc_append_history   # save history entries as soon as they are entered
-setopt share_history        # share history between different instances of the shell
-setopt autocd               # Giving a dir makes it cd to the same
-setopt rmstarsilent
-setopt interactive_comments # Allow comments in shell
+setopt AUTOCD               # Giving a dir makes it cd to the same
+setopt CLOBBER              # Enables piping to existing files without warning
+setopt HIST_IGNORE_ALL_DUPS # remove older duplicate entries from history
+setopt HIST_REDUCE_BLANKS   # remove superfluous blanks from history items
+setopt INC_APPEND_HISTORY   # save history entries as soon as they are entered
+setopt INTERACTIVE_COMMENTS # Allow comments in shell
+setopt RMSTARSILENT         # Don't give warnings when doing rm
+setopt SHARE_HISTORY        # share history between different instances of the shell
 
 autoload -Uz compinit
 _comp_files=(${ZDOTDIR:-$HOME}/.zcompdump(Nm-20))
