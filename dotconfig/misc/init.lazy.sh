@@ -10,4 +10,4 @@ function benchmark_zsh() {
     hyperfine -w 20 -r 50 "zsh -i -c exit;";
 }
 
-#source ~/.zsh-prompt-benchmark/zsh-prompt-benchmark.plugin.zsh
+zinit wait lucid light-mode for romkatv/zsh-prompt-benchmark
