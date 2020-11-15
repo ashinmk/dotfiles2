@@ -66,8 +66,6 @@ zinit wait lucid depth="1" src="shell/key-bindings.zsh" for junegunn/fzf;
 
 zinit wait lucid src=".iterm2_shell_integration.zsh" id-as="iterm2-shell-integration" for "${HOME}";
 
-alias bb="brazil-build"
-
 for initFile in $HOME/.dotconfig/*/init.sh; do
     source "$initFile"
 done
