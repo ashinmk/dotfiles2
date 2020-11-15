@@ -5,8 +5,6 @@ ln -f -s "${currentDir}/zprofile.sh" ~/.zprofile
 ln -f -s "${currentDir}/zshrc.sh" ~/.zshrc
 touch "~/.hushlogin"
 
-ln -f -s "${currentDir}/homebrew_init.sh" ~/.homebrew_init
-
 rm -rf ~/.dotconfig;
 ln -f -s "${currentDir}/dotconfig" ~/.dotconfig;
 rm -rf ~/.amazon.ext.dotconfig
