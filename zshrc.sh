@@ -1,8 +1,6 @@
 LC_CTYPE=en_US.UTF-8
 LC_ALL=en_US.UTF-8
 
-source "${HOME}/.homebrew_init"
-
 export PATH="${HOME}/Scripts/bin:${HOME}/.toolbox/bin:$PATH"
 
 setopt AUTOCD                     # Giving a dir makes it cd to the same
@@ -23,20 +21,50 @@ HISTFILE="${HISTFILE:-${ZDOTDIR:-$HOME}/.zhistory}"  # The path to the history f
 HISTSIZE=100000                   # The maximum number of events to save in the internal history.
 SAVEHIST=100000                   # The maximum number of events to save in the history file.
 
-
-autoload -Uz compinit
-_comp_files=(${ZDOTDIR:-$HOME}/.zcompdump(Nm-20))
-if (( $#_comp_files )); then
-  compinit -i -C
-else
-  compinit -i
+### Added by Zinit's installer
+if [[ ! -f $HOME/.zinit/bin/zinit.zsh ]]; then
+    print -P "%F{33}▓▒░ %F{220}Installing %F{33}DHARMA%F{220} Initiative Plugin Manager (%F{33}zdharma/zinit%F{220})…%f"
+    command mkdir -p "$HOME/.zinit" && command chmod g-rwX "$HOME/.zinit"
+    command git clone https://github.com/zdharma/zinit "$HOME/.zinit/bin" && \
+        print -P "%F{33}▓▒░ %F{34}Installation successful.%f%b" || \
+        print -P "%F{160}▓▒░ The clone has failed.%f%b"
 fi
-unset _comp_files
 
-iterm2_hostname=${HOST}; # Remove if we'll ever start modifying $HOST.
-source "${HOME}/.iterm2_shell_integration.zsh"
+source "$HOME/.zinit/bin/zinit.zsh"
+autoload -Uz _zinit
+(( ${+_comps} )) && _comps[zinit]=_zinit
 
-source "${HOMEBREW_PREFIX}/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
+### End of Zinit's installer chunk
+
+local brew_env_file="${HOME}/.brew-env.sh";
+
+function setup_brew_env() {
+    brew shellenv > "$brew_env_file";
+    local gnubin_paths=$(find /usr/local/opt -type d -follow -name gnubin -print 2> /dev/null | /usr/local/opt/coreutils/libexec/gnubin/paste -s -d ':');
+    echo "export PATH=\"${gnubin_paths}:$PATH\"" >> "$brew_env_file";
+}
+
+if [[ (! -f "$brew_env_file") ]]; then
+    setup_brew_env;
+fi;
+
+source "$brew_env_file";
+
+zinit wait lucid light-mode for \
+    atinit='zicompinit; zicdreplay' \
+        zdharma/fast-syntax-highlighting \
+    atload='_zsh_autosuggest_start' \
+        zsh-users/zsh-autosuggestions \
+    blockf atpull='zinit creinstall -q .' \
+        zsh-users/zsh-completions
+
+
+zinit wait lucid light-mode for atload='zsh-defer source "${HOME}/.dotconfig/lazy-init.sh"' romkatv/zsh-defer
+
+zinit light-mode from="gh-r" as"program" id-as="fzf-bin" for junegunn/fzf;
+zinit wait lucid depth="1" src="shell/key-bindings.zsh" for junegunn/fzf;
+
+zinit wait lucid src=".iterm2_shell_integration.zsh" id-as="iterm2-shell-integration" for "${HOME}";
 
 alias bb="brazil-build"
 
@@ -52,13 +80,10 @@ for aliasFile in $HOME/.dotconfig/*/aliases.sh; do
     source "$aliasFile"
 done
 
-# eval "$(starship init zsh)" ## ORIGINAL
-
-# source <("/usr/local/bin/starship" init zsh --print-full-init)  ## Generated Wrapper
-# [[ -f ${HOME}/.starship-init.sh  ]] || (starship init zsh --print-full-init > ${HOME}/.starship-init.sh);
 source ${HOME}/.starship-init.sh;
 
 function benchmark_zsh() {
     hyperfine -w 20 -r 50 "zsh -i -c exit;";
 }
+
 #source ~/.zsh-prompt-benchmark/zsh-prompt-benchmark.plugin.zsh

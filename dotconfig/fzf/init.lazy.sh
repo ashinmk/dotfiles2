@@ -1,5 +1,4 @@
-current_dir=${0:h}
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+bindkey -r '^T';    # Remove default FZF File Select
 [ -f "${current_dir}/catj-fzf.zsh" ] && source "${current_dir}/catj-fzf.zsh"
 
 fzf-file-select() {
