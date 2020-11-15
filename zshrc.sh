@@ -48,9 +48,3 @@ for aliasFile in $HOME/.dotconfig/*/aliases.sh; do
 done
 
 source ${HOME}/.starship-init.sh;
-
-function benchmark_zsh() {
-    hyperfine -w 20 -r 50 "zsh -i -c exit;";
-}
-
-#source ~/.zsh-prompt-benchmark/zsh-prompt-benchmark.plugin.zsh

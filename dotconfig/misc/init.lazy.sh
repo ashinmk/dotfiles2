@@ -5,3 +5,9 @@ function zle-reload-zsh() {
 
 zle -N zle-reload-zsh;
 bindkey '\eR\eR' zle-reload-zsh;
+
+function benchmark_zsh() {
+    hyperfine -w 20 -r 50 "zsh -i -c exit;";
+}
+
+#source ~/.zsh-prompt-benchmark/zsh-prompt-benchmark.plugin.zsh
