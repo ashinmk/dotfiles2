@@ -42,3 +42,8 @@ for aliasFile in $HOME/.dotconfig/*/aliases.sh; do
 done
 
 zinit light-mode for pick="$HOME/.dotconfig/p10k/p10k.zsh" src="powerlevel10k.zsh-theme" depth="1" romkatv/powerlevel10k;
+
+source "$HOME/.dotconfig/prompt-segment/init.zsh";
+
+zinit lucid light-mode for pick="/dev/null" load='[[ true ]]' atload="prompt_my_midway_status_worker" "$HOME/.dotconfig/prompt-segment";
+zinit lucid light-mode for pick="/dev/null" load='[[ true ]]' atload="prompt_my_nds_status_worker" "$HOME/.dotconfig/prompt-segment";
