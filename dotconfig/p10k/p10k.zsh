@@ -102,6 +102,7 @@
     newline
     my_midway_status
     my_nds_status
+    my_bbserver_status
     # ip                    # ip address and bandwidth usage for a specified network interface
     # public_ip             # public IP address
     # proxy                 # system-wide http/https/ftp proxy

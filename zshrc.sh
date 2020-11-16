@@ -25,6 +25,8 @@ zinit wait lucid light-mode for \
     blockf atpull='zinit creinstall -q .' zsh-users/zsh-completions
 
 
+export BRAZIL_WS_DIR="/ws";
+
 zinit wait lucid light-mode for atload='zsh-defer source "${HOME}/.dotconfig/lazy-init.sh"' romkatv/zsh-defer
 
 zinit wait lucid for id-as="iterm2-shell-integration" pick=".iterm2_shell_integration.zsh" "${HOME}";
@@ -46,4 +48,9 @@ zinit light-mode for pick="$HOME/.dotconfig/p10k/p10k.zsh" src="powerlevel10k.zs
 source "$HOME/.dotconfig/prompt-segment/init.zsh";
 
 zinit lucid light-mode for pick="/dev/null" load='[[ true ]]' atload="prompt_my_midway_status_worker" "$HOME/.dotconfig/prompt-segment";
-zinit lucid light-mode for pick="/dev/null" load='[[ true ]]' atload="prompt_my_nds_status_worker" "$HOME/.dotconfig/prompt-segment";
+
+if [[ "$OSTYPE" == darwin* ]]; then
+    zinit lucid light-mode for pick="/dev/null" load='[[ true ]]' atload="prompt_my_nds_status_worker" "$HOME/.dotconfig/prompt-segment";
+else
+    zinit lucid light-mode for pick="/dev/null" load='[[ true ]]' atload='prompt_my_bbserver_status_worker' "$HOME/.dotconfig/prompt-segment";
+fi;

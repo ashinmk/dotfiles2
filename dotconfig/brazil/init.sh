@@ -1,5 +1,3 @@
-BRAZIL_WS_DIR="/ws";
-
 fzf-brazil-add-package() {
     local currentWS="$BRAZIL_WS_DIR/"$(pwd | sed "s:$BRAZIL_WS_DIR/::g" | cut -d '/' -f 1);
     local versionSet=$(cat $currentWS/packageInfo | rg versionSet | cut -d '"' -f 2);
