@@ -20,17 +20,14 @@ autoload -Uz _zinit
 source "$HOME/.dotconfig/early-env-setup/brew-env-setup.sh";
 
 zinit wait lucid light-mode for \
-    atinit='zicompinit; zicdreplay' \
-        zdharma/fast-syntax-highlighting \
-    atload='_zsh_autosuggest_start' \
-        zsh-users/zsh-autosuggestions \
-    blockf atpull='zinit creinstall -q .' \
-        zsh-users/zsh-completions
+    atinit='zicompinit; zicdreplay' zdharma/fast-syntax-highlighting \
+    atload='_zsh_autosuggest_start' zsh-users/zsh-autosuggestions \
+    blockf atpull='zinit creinstall -q .' zsh-users/zsh-completions
 
 
 zinit wait lucid light-mode for atload='zsh-defer source "${HOME}/.dotconfig/lazy-init.sh"' romkatv/zsh-defer
 
-zinit wait lucid src=".iterm2_shell_integration.zsh" id-as="iterm2-shell-integration" for "${HOME}";
+zinit wait lucid for id-as="iterm2-shell-integration" pick=".iterm2_shell_integration.zsh" "${HOME}";
 
 for initFile in $HOME/.dotconfig/*/init.sh; do
     source "$initFile"
