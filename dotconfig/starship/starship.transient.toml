@@ -1,4 +1,0 @@
-add_newline = false
-
-format = """
-$character"""

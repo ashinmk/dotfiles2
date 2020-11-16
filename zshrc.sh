@@ -41,4 +41,4 @@ for aliasFile in $HOME/.dotconfig/*/aliases.sh; do
     source "$aliasFile"
 done
 
-source ${HOME}/.starship-init.sh;
+zinit light-mode for pick="$HOME/.dotconfig/p10k/p10k.zsh" src="powerlevel10k.zsh-theme" depth="1" romkatv/powerlevel10k;
