@@ -27,7 +27,7 @@ zinit wait lucid light-mode for \
 
 export BRAZIL_WS_DIR="/ws";
 
-zinit wait lucid light-mode for atload='zsh-defer source "${HOME}/.dotconfig/lazy-init.sh"' romkatv/zsh-defer
+zinit wait lucid light-mode for atload='zsh-defer source "${HOME}/.dotconfig/lazy-init.sh"' depth="1" romkatv/zsh-defer
 
 zinit wait lucid for id-as="iterm2-shell-integration" pick=".iterm2_shell_integration.zsh" "${HOME}";
 
@@ -43,7 +43,7 @@ for aliasFile in $HOME/.dotconfig/*/aliases.sh; do
     source "$aliasFile"
 done
 
-zinit light-mode for pick="$HOME/.dotconfig/p10k/p10k.zsh" src="powerlevel10k.zsh-theme" depth="1" romkatv/powerlevel10k;
+zinit light-mode for pick="powerlevel10k.zsh-theme" src="$HOME/.dotconfig/p10k/p10k.zsh" depth="1" romkatv/powerlevel10k;
 
 source "$HOME/.dotconfig/prompt-segment/init.zsh";
 
