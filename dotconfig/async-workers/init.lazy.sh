@@ -1,14 +1,21 @@
 #################################################################################
 #################################################################################
 ############################## Begin Framework Code #############################
-G_ASYNC_WORKER_DIR="$HOME/.dotconfig/async-workers";
-G_ASYNC_WORKER_OUTPUT_DIR="$HOME/.g-worker/outs";
-G_ASYNC_WORKER_OUTPUT_SRC_REL_DIR="src";
+export G_ASYNC_WORKER_DIR="$HOME/.dotconfig/async-workers";
+export G_ASYNC_WORKER_OUTPUT_DIR="$HOME/.g-worker/outs";
+export G_ASYNC_WORKER_OUTPUT_SRC_REL_DIR="src";
+export G_ASYNC_WORKER_OUTPUT_SRC_MERGED_FILENAME="merged_src_out.sh";
 
 function g_worker_initialize() {
     if [[ ! -d "$G_ASYNC_WORKER_OUTPUT_DIR/$G_ASYNC_WORKER_OUTPUT_SRC_REL_DIR" ]]; then
         mkdir -p "$G_ASYNC_WORKER_OUTPUT_DIR";
         mkdir -p "$G_ASYNC_WORKER_OUTPUT_DIR/$G_ASYNC_WORKER_OUTPUT_SRC_REL_DIR";
+    fi;
+
+    # Don't reuse src if old.
+    local output_src_recently_updated=($G_ASYNC_WORKER_OUTPUT_DIR/$G_ASYNC_WORKER_OUTPUT_SRC_MERGED_FILENAME(Nms-30));
+    if [[ -z "$output_src_recently_updated" ]]; then
+        echo '' > "$G_ASYNC_WORKER_OUTPUT_DIR/$G_ASYNC_WORKER_OUTPUT_SRC_MERGED_FILENAME";
     fi;
 }
 
@@ -44,12 +51,10 @@ function run_periodic_async() {
 }
 
 g_worker_initialize;
+run_periodic_async "merge_output_src" 10 "merge_output_src.out";
 
 function source_worker_output_src() {
-    if [[ (-z "$G_ASYNC_WORKER_OUTPUT_DIR") || (! -d "$G_ASYNC_WORKER_OUTPUT_DIR/src") ]]; then
-        return;
-    fi
-    source <(cat $G_ASYNC_WORKER_OUTPUT_DIR/src/*)
+    source "$G_ASYNC_WORKER_OUTPUT_DIR/$G_ASYNC_WORKER_OUTPUT_SRC_MERGED_FILENAME";
 }
 
 precmd_functions+=(source_worker_output_src)
