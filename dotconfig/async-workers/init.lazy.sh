@@ -57,7 +57,7 @@ function source_worker_output_src() {
     source "$G_ASYNC_WORKER_OUTPUT_DIR/$G_ASYNC_WORKER_OUTPUT_SRC_MERGED_FILENAME";
 }
 
-precmd_functions+=(source_worker_output_src)
+precmd_functions=(source_worker_output_src "${precmd_functions[@]}")
 
 ############################# End of Framework Code #############################
 #################################################################################
