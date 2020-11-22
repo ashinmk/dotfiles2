@@ -6,8 +6,10 @@ G_ASYNC_WORKER_OUTPUT_DIR="$HOME/.g-worker/outs";
 G_ASYNC_WORKER_OUTPUT_SRC_REL_DIR="src";
 
 function g_worker_initialize() {
-#    mkdir -p "$G_ASYNC_WORKER_OUTPUT_DIR";
-#    mkdir -p "$G_ASYNC_WORKER_OUTPUT_DIR/$G_ASYNC_WORKER_OUTPUT_SRC_REL_DIR";
+    if [[ ! -d "$G_ASYNC_WORKER_OUTPUT_DIR/$G_ASYNC_WORKER_OUTPUT_SRC_REL_DIR" ]]; then
+        mkdir -p "$G_ASYNC_WORKER_OUTPUT_DIR";
+        mkdir -p "$G_ASYNC_WORKER_OUTPUT_DIR/$G_ASYNC_WORKER_OUTPUT_SRC_REL_DIR";
+    fi;
 }
 
 ####################################

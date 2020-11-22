@@ -12,11 +12,10 @@ function find_bb_server_names_for_processes() {
 function set_bb_servers_running() {
     local bbServerProcessesRunning="$(find_bb_server_processes)";
     if [[ ! -z "$bbServerProcessesRunning" ]]; then
-        local server_names=$(find_bb_server_names_for_processes "$bbServerProcessesRunning");
-        local server_names_array="($(echo $server_names | paste -s -d ' '))";
-        echo "export G_BB_SERVERS_RUNNING=$server_names_array";
+        local server_names=$(find_bb_server_names_for_processes "$bbServerProcessesRunning" | paste -s -d ' ');
+        echo "export G_BB_SERVERS_RUNNING=\"$server_names\"";
     else
-        echo "export G_BB_SERVERS_RUNNING=()";
+        echo 'export G_BB_SERVERS_RUNNING=""';
     fi;
 }
 

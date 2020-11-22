@@ -24,7 +24,7 @@ function prompt_my_bbserver_status() {
         return;
     fi;
     local currentWSName=$(pwd | sed "s:$BRAZIL_WS_DIR/::g" | cut -d '/' -f 1);
-    if [[ ${G_BB_SERVERS_RUNNING[(ie)$currentWSName]} -le ${#BB_SERVERS_RUNNING} ]]; then
+    if [[ "$G_BB_SERVERS_RUNNING" = *${currentWSName}* ]]; then
         p10k segment -s SERVER_RUNNING -f green -t "";
     else
         p10k segment -s SERVER_NOT_RUNNING -f red -t "";
