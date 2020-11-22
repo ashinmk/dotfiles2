@@ -16,9 +16,6 @@ function prompt_my_nds_status() {
 }
 
 function prompt_my_bbserver_status() {
-    if [[ -z "$G_BB_SERVERS_RUNNING" ]]; then
-        return;
-    fi;
     if [[ $PWD != $BRAZIL_WS_DIR/* ]]; then
         p10k segment -s NA -t "";
         return;
