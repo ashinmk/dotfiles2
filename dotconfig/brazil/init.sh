@@ -39,10 +39,40 @@ fzf-brazil-remove-package() {
 zle -N fzf-brazil-remove-package;
 bindkey '\ebr' fzf-brazil-remove-package;
 
+zle-brazil-show() {
+    BUFFER="brazil ws show";
+    zle accept-line;
+}
+
+zle -N zle-brazil-show;
+bindkey '\ebs' zle-brazil-show;
+
 zle-brazil-sync() {
     BUFFER="brazil ws sync --md";
     zle accept-line;
 }
 
 zle -N zle-brazil-sync;
-bindkey '\ebs' zle-brazil-sync;
+bindkey '\ebS' zle-brazil-sync;
+
+zle-fzf-cr() {
+    local currentWS="$BRAZIL_WS_DIR/"$(pwd | sed "s:$BRAZIL_WS_DIR/::g" | cut -d '/' -f 1);
+    local out=$(ls $currentWS/src | fzf --multi --expect="alt-enter");
+    local cmd=$(echo "$out" | head -1);
+    local packages=$(echo "$out" | tail -n +2);
+    if [[ -z "$packages" ]]; then
+        return 0;
+    fi;
+    local packageRef=$(echo $packages | sed -r 's.$.[HEAD~1].g' | paste -s -d ',');
+    local numPackages=$(echo $packages | wc -l);
+    if [[ "$numPackages" -eq 1 ]]; then
+        BUFFER='cr --include "'$packageRef'"';
+    elif [[ -z "$cmd" ]]; then
+        BUFFER='cr --include "'$packageRef'" --new-revision';
+    else
+        BUFFER='cr --include "'$packageRef'"';
+    fi;
+}
+
+zle -N zle-fzf-cr;
+bindkey '\ebc' zle-fzf-cr;
