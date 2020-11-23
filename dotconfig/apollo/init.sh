@@ -1,7 +1,7 @@
 bindkey -r '\ea';   # Unbind default
 
 fzf-apollo-activate() {
-    local apolloEnv=$(ls /apollo/env | rg -v 'CONSUMES' | fzf);
+    local apolloEnv=$(ls /apollo/env | rg -v 'CONSUMES' | awk '{print $1}' | fzf);
     if [[ ! -z "$apolloEnv" ]]; then
         BUFFER="sudo /apollo/bin/runCommand -a Activate -e $apolloEnv";
         zle accept-line;
