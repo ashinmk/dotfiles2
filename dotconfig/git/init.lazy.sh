@@ -78,3 +78,19 @@ fzf-git-unstage() {
 
 zle -N fzf-git-unstage;
 bindkey '\egA' fzf-git-unstage;
+
+zle-git-pull() {
+    BUFFER="git pull";
+    zle accept-line;
+}
+
+zle -N zle-git-pull;
+bindkey '\egp' zle-git-pull;
+
+zle-git-clean() {
+    BUFFER="git clean -df";
+    zle accept-line;
+}
+
+zle -N zle-git-clean;
+bindkey '\egCC' zle-git-clean;  ## Make it harder for typos.
