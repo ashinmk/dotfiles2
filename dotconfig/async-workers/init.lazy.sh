@@ -68,4 +68,4 @@ if [[ "$OSTYPE" == darwin* ]]; then
 else
     run_periodic_async "bb_server_tracker" 10 "$G_ASYNC_WORKER_OUTPUT_SRC_REL_DIR/bb_server_status";
 fi;
-run_periodic_async "midway_status" 60 "$G_ASYNC_WORKER_OUTPUT_SRC_REL_DIR/midway_status";
+run_periodic_async "midway_status" 10 "$G_ASYNC_WORKER_OUTPUT_SRC_REL_DIR/midway_status";
