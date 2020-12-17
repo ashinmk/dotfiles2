@@ -10,13 +10,18 @@
         "https://tt.amazon.com/search?status=Assigned%3BResearching%3BWork+In+Progress%3BPending&assigned_group=CCT-CustomerManagement&search=1#",
         "https://tt.amazon.com/search?status=Assigned%3BResearching%3BWork+In+Progress%3BPending&assigned_group=FMP-Devs&search=1#",
         "https://tt.amazon.com/search?status=Assigned%3BResearching%3BWork+In+Progress%3BPending&assigned_group=swa-sp&search=1#",
-        "https://tt.amazon.com/search?status=Assigned%3BResearching%3BWork+In+Progress%3BPending&assigned_group=CCT-QA&search=1#"
+        "https://tt.amazon.com/search?status=Assigned%3BResearching%3BWork+In+Progress%3BPending&assigned_group=CCT-QA&search=1#",
+        "https://tt.amazon.com/search?status=Assigned%3BResearching%3BWork+In+Progress%3BPending&assigned_group=CCT-TransitTimeGenerator&search=1#",
+        "https://tt.amazon.com/search?status=Assigned%3BResearching%3BWork+In+Progress%3BPending&assigned_group=SWA-REX&search=1#",
+        "https://tt.amazon.com/search?status=Assigned%3BResearching%3BWork+In+Progress%3BPending&assigned_group=tetris-dev&search=1#",
+        "https://tt.amazon.com/search?status=Assigned%3BResearching%3BWork+In+Progress%3BPending&assigned_group=SWA-TSV&search=1#"
     ],
     "Reddit Tech Reads": [
         "https://www.reddit.com/r/commandline",
         "https://www.reddit.com/r/zsh",
         "https://www.reddit.com/r/java",
         "https://www.reddit.com/r/vscode",
-        "https://www.reddit.com/r/macapps"
+        "https://www.reddit.com/r/macapps",
+        "https://www.reddit.com/r/nativemacapps"
     ]
 }
