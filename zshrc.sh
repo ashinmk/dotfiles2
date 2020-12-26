@@ -19,7 +19,7 @@ autoload -Uz _zinit
 
 source "$HOME/.dotconfig/early-env-setup/brew-env-setup.sh";
 
-export BRAZIL_WS_DIR="/ws";
+export BRAZIL_WS_DIR="$HOME/ws";
 
 for initFile in $HOME/.dotconfig/*/init.sh; do
     source "$initFile"
