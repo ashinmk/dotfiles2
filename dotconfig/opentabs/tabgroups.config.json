@@ -23,5 +23,20 @@
         "https://www.reddit.com/r/vscode",
         "https://www.reddit.com/r/macapps",
         "https://www.reddit.com/r/nativemacapps"
+    ],
+    "FMT Pipelines": [
+        "https://pipelines.amazon.com/pipelines/AlmanacService",
+        "https://pipelines.amazon.com/pipelines/DRAXService",
+        "https://pipelines.amazon.com/pipelines/DRAXServiceBastionInfrastructure",
+        "https://pipelines.amazon.com/pipelines/DRAXServiceInfrastructure",
+        "https://pipelines.amazon.com/pipelines/DRAXServiceSinglePassInfrastructure",
+        "https://pipelines.amazon.com/pipelines/DRAXServiceVpcInfrastructure",
+        "https://pipelines.amazon.com/pipelines/FMTBUDSLambda",
+        "https://pipelines.amazon.com/pipelines/FMTBUDSVpcInfrastructure",
+        "https://pipelines.amazon.com/pipelines/GazetteService",
+        "https://pipelines.amazon.com/pipelines/PidgeottoServiceLambda",
+        "https://pipelines.amazon.com/pipelines/PidgeottoServiceLambdaCDK",
+        "https://pipelines.amazon.com/pipelines/PidgeottoServiceVpcInfrastructure",
+        "https://pipelines.amazon.com/pipelines/SWACustomerManagementTool"
     ]
 }
