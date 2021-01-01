@@ -64,7 +64,7 @@ bindkey '\egh' zle-git-hmm;
 fzf-git-add() {
     local modifiedFiles=$(git diff --name-only);
     local untrackedPaths=$(git ls-files . --exclude-standard --others);
-    local selectedFiles=$(echo "${modifiedFiles}\n${untrackedPaths}" | rg -N . | fzf -m --preview 'git diff {}' | paste -s -d ' ');
+    local selectedFiles=$(echo "${modifiedFiles}\n${untrackedPaths}" | rg -N . | fzf -m --reverse --preview 'git diff {}' | paste -s -d ' ');
     [[ -z "$selectedFiles" ]] || BUFFER="git add $selectedFiles" && zle accept-line;
 }
 
