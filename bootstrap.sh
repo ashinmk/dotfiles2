@@ -1,10 +1,11 @@
 #!/bin/bash
 currentDir=$(pwd);
-touch "$HOME/.hushlogin"
 
+# Since we are symlinking this, remove if already exists.
 rm -rf ~/.dotconfig;
 ln -f -s "${currentDir}/dotconfig" ~/.dotconfig;
-rm -rf ~/.amazon.ext.dotconfig
+
+# Create amazon.ext.dotconfig if not existing. Do not delete.
 mkdir -p ~/.amazon.ext.dotconfig/sample;
 touch ~/.amazon.ext.dotconfig/sample/init.sh
 
