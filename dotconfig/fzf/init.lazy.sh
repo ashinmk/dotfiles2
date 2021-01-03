@@ -1,3 +1,5 @@
+zinit wait lucid depth="1" src="shell/key-bindings.zsh" for junegunn/fzf;
+
 bindkey -r '^T';    # Remove default FZF File Select
 [ -f "${current_dir}/catj-fzf.zsh" ] && source "${current_dir}/catj-fzf.zsh"
 
