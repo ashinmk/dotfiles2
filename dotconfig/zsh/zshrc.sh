@@ -15,7 +15,7 @@ source "$HOME/.dotconfig/early-env-setup/brew-env-setup.sh";
 
 export BRAZIL_WS_DIR="$HOME/ws";
 
-for initFile in $HOME/.dotconfig/*/init.sh; do
+for initFile in $HOME/.dotconfig/*/init.eager.sh; do
     source "$initFile"
 done
 
