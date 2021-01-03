@@ -1,8 +1,5 @@
 #!/bin/bash
 currentDir=$(pwd);
-ln -f -s "${currentDir}/zshenv.sh" ~/.zshenv
-ln -f -s "${currentDir}/zprofile.sh" ~/.zprofile
-ln -f -s "${currentDir}/zshrc.sh" ~/.zshrc
 touch "$HOME/.hushlogin"
 
 rm -rf ~/.dotconfig;
