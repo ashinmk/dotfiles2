@@ -45,8 +45,9 @@ bindkey '\egr' fzf-git-rebase-interactive;
 
 fzf-git-diff() {
     local selectedFile;
-    selectedFile=$(git diff --name-only | fzf --preview 'git diff {}');
-    [[ -z "$selectedFile" ]] || BUFFER="git diff \"${selectedFile}\"" && zle accept-line;
+    local gitRootDir=$(git rev-parse --show-toplevel);
+    selectedFile=$(git diff --name-only | fzf --preview 'git diff '${gitRootDir}'/{}');
+    [[ -z "$selectedFile" ]] || BUFFER="git diff \"${gitRootDir}/${selectedFile}\"" && zle accept-line;
 }
 
 zle -N fzf-git-diff;
@@ -62,18 +63,26 @@ zle -N zle-git-hmm;
 bindkey '\egh' zle-git-hmm;
 
 fzf-git-add() {
+    local gitRootDir=$(git rev-parse --show-toplevel);
     local modifiedFiles=$(git diff --name-only);
-    local untrackedPaths=$(git ls-files . --exclude-standard --others);
-    local selectedFiles=$(echo "${modifiedFiles}\n${untrackedPaths}" | rg -N . | fzf -m --reverse --preview 'git diff {}' | paste -s -d ' ');
-    [[ -z "$selectedFiles" ]] || BUFFER="git add $selectedFiles" && zle accept-line;
+    local untrackedPaths=$(git ls-files $gitRootDir --exclude-standard --others --full-name);
+    local selectedFiles=$(echo "${modifiedFiles}\n${untrackedPaths}" | rg -N . | fzf -m --reverse --preview 'git diff '${gitRootDir}'/{}');
+    if [[ ! -z "$selectedFiles" ]]; then
+        selectedFiles=$(echo $selectedFiles | sd '^(.+)' "$gitRootDir/\$1" | sd '\n' ' ');
+        BUFFER=" git add ${selectedFiles}" && zle accept-line;
+    fi;
 }
 
 zle -N fzf-git-add;
 bindkey '\ega' fzf-git-add;
 
 fzf-git-unstage() {
-    local selectedFiles=$(git diff --cached --name-only | fzf -m --preview 'git diff {}' | paste -s -d ' ');
-    [[ -z "$selectedFiles" ]] || BUFFER="git restore --staged $selectedFiles" && zle accept-line;
+    local gitRootDir=$(git rev-parse --show-toplevel);
+    local selectedFiles=$(git diff --cached --name-only | fzf -m --reverse --preview 'git diff '${gitRootDir}'/{}');
+    if [[ ! -z "$selectedFiles" ]]; then
+        selectedFiles=$(echo $selectedFiles | sd '^(.+)' "$gitRootDir/\$1" | sd '\n' ' ');
+        BUFFER=" git restore --staged ${selectedFiles}" && zle accept-line;
+    fi;
 }
 
 zle -N fzf-git-unstage;
