@@ -12,8 +12,7 @@ autoload -Uz _zinit
 ### End of Zinit's installer chunk
 
 source "$HOME/.dotconfig/early-env-setup/brew-env-setup.sh";
-
-export BRAZIL_WS_DIR="$HOME/ws";
+source "$HOME/.dotconfig/early-env-setup/aliases.sh";
 
 for initFile in $HOME/.dotconfig/*/init.eager.sh; do
     source "$initFile"
