@@ -1,6 +1,6 @@
 local brew_env_file="${HOME}/.brew-env.sh";
 
-function setup_brew_env() {
+function setup_brew_env_file() {
     local brewExec;
     local pasteExec;
     local brewGnuSearchPath;
@@ -21,7 +21,7 @@ function setup_brew_env() {
 }
 
 if [[ (! -f "$brew_env_file") ]]; then
-    setup_brew_env;
+    setup_brew_env_file;
 fi;
 
 source "$brew_env_file";
