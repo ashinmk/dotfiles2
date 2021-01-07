@@ -5,6 +5,7 @@
   - [Application Install](#application-install)
   - [Workspace Setup](#workspace-setup)
   - [Config Setup](#config-setup)
+- [Apps I Use](#apps-i-use)
 
 ## Introduction
 While the repo calls itself a Dotfile repo, it actually consists of most of what I need to get a laptop up and running. This setup has been split into two parts -
@@ -36,6 +37,7 @@ Note that I have stopped using Homebrew Cask in favour of MAS and direct install
     ```
 5. Delete the repo pulled in step #1.
 6. Proceed to Config Install section.
+7. Install normal apps listed below as required.
 
 ### Application Install
 All apps to be installed (via Brew, Yum etc.) are covered in `install-apps.sh`. You would rarely need to rerun this script.
@@ -53,3 +55,22 @@ If you're setting it up on a dev-desktop, a new empty dir in `~/ws` will do.
 The dotconfig dir which hosts all the dotfiles will be symlinked to $HOME/.dotconfig. Any existing link to this dir will be removed. This will serve as the entry point to the config files. This allows you to keep your repo anywhere but still have a static reference for your scripts.
 
 As part of installation, app-level bootstrap files (`bootstrap.sh`) inside dotconfig are run. There is no guarantee that these won't modify existing config.
+
+## Apps I Use
+- Alfred
+- Arq (Amazon-license)
+- Contexts
+- Dato
+- DropZone
+- Google Backup And Sync (Personal Use; Avoid Office Data)
+- Hammerspoon
+- IINA
+- IntelliJ IDEA
+- iTerm2
+- Karabiner Elements
+- Pocket (Personal Use; Avoid Office Data)
+- Postman
+- Spotify
+- Vanilla
+- VS Code
+- Todoist (Personal Use; Avoid Office Data)
