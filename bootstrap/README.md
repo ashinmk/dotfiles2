@@ -72,7 +72,7 @@ If you're setting it up on a dev-desktop, a new empty dir in `~/ws` will do.
 
 The dotconfig dir which hosts all the dotfiles will be symlinked to $HOME/.dotconfig. Any existing link to this dir will be removed. This will serve as the entry point to the config files. This allows you to keep your repo anywhere but still have a static reference for your scripts.
 
-As part of installation, app-level bootstrap files (`bootstrap.sh`) inside dotconfig are run. There is no guarantee that these won't modify existing config.
+As part of installation, app-level bootstrap files (`bootstrap.sh`) inside dotconfig are sourced (not run). There is no guarantee that these won't modify existing config.
 
 ### MacOS Keyboard Layout
 The default MacOS keyboard layout has special character bindings for most Alt+'char' keys. This removes a lot of useful keybindings in terminal. The attached alternative keyboard layout removes them. Run `setup_keyboard_layout.sh` to set it up. Logout & Login and then change Input Source in Settings to x_layout. It'll show up in the "Others" section.
