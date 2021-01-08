@@ -1,5 +1,3 @@
-BRAZIL_WS_DIR="/ws";
-
 function find_bb_server_processes() {
     ps -eaf | rg 'brazil-build server' | awk '{print $2 "%%%" $8}' | rg -v '%%%rg$' | cut -d '%' -f 1;
 }

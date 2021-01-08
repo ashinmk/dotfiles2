@@ -53,9 +53,9 @@ fzf-cd() {
     return $return_value
 }
 
-# ALT-W - cd into $HOME/ws
+# ALT-W - cd into $BRAZIL_WS_DIR
 fzf-cd-ws-widget() {
-    fzf-cd "fd -d 1 -t d . $HOME/ws/*/src"
+    fzf-cd "fd -d 1 -t d . $BRAZIL_WS_DIR/*/src"
     return $?
 }
 zle -N fzf-cd-ws-widget
