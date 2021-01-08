@@ -1,2 +1,2 @@
 rm -rf ~/.config/karabiner
-ln -f -s "$(pwd)/dotconfig/karabiner/config" ~/.config/karabiner
+ln -f -s "$REPO_DIR/dotconfig/karabiner/config" ~/.config/karabiner
