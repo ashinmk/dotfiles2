@@ -19,6 +19,7 @@ fzf-brazil-add-package() {
         else
             BUFFER="brazil ws use -p $packageName";
         fi;
+        zle autosuggest-clear;
         zle accept-line;
     fi
 }
@@ -32,6 +33,7 @@ fzf-brazil-remove-package() {
     | rev | cut -d '-' -f 2- | rev | fzf);
     if [[ ! -z "$packageName" ]]; then
         BUFFER="brazil ws remove -p $packageName";
+        zle autosuggest-clear;
         zle accept-line;
     fi;
 }
