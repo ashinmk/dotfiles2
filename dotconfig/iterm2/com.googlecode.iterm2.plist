@@ -981,6 +981,14 @@
 					<key>regex</key>
 					<string>(?i:.*\[(error|fatal)\].*)</string>
 				</dict>
+				<dict>
+					<key>action</key>
+					<string>iTermUserNotificationTrigger</string>
+					<key>parameter</key>
+					<string>Build Failed</string>
+					<key>regex</key>
+					<string>BUILD FAILED</string>
+				</dict>
 			</array>
 			<key>Unlimited Scrollback</key>
 			<true/>
