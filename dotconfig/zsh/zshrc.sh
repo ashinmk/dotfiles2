@@ -13,7 +13,7 @@ autoload -Uz _zinit
 
 ### End of Zinit's installer chunk
 
-for initFile in $HOME/.dotconfig/*/init.eager.sh; do
+for initFile in $DOTCONFIG_DIR/*/init.eager.sh; do
     source "$initFile"
 done
 
@@ -21,13 +21,13 @@ for initFile in $HOME/.amazon.ext.dotconfig/*/init.sh; do
     source "$initFile"
 done
 
-for aliasFile in $HOME/.dotconfig/*/aliases.sh; do
+for aliasFile in $DOTCONFIG_DIR/*/aliases.sh; do
     source "$aliasFile"
 done
 
-zinit light-mode for pick="powerlevel10k.zsh-theme" src="$HOME/.dotconfig/p10k/p10k.zsh" depth="1" romkatv/powerlevel10k;
+zinit light-mode for pick="powerlevel10k.zsh-theme" src="$DOTCONFIG_DIR/p10k/p10k.zsh" depth="1" romkatv/powerlevel10k;
 
-zinit wait lucid light-mode for id-as="lazy-init" pick="lazy-init-all.sh" "${HOME}/.dotconfig/zsh";
+zinit wait lucid light-mode for id-as="lazy-init" pick="lazy-init-all.sh" "$DOTCONFIG_DIR/zsh";
 
 # Uncomment to benchmark load-time
 #zprof

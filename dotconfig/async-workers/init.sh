@@ -1,7 +1,7 @@
 #################################################################################
 #################################################################################
 ############################## Begin Framework Code #############################
-export G_ASYNC_WORKER_DIR="$HOME/.dotconfig/async-workers";
+export G_ASYNC_WORKER_DIR="$DOTCONFIG_DIR/async-workers";
 export G_ASYNC_WORKER_OUTPUT_DIR="$HOME/.g-worker/outs";
 export G_ASYNC_WORKER_OUTPUT_SRC_REL_DIR="src";
 export G_ASYNC_WORKER_OUTPUT_SRC_MERGED_FILENAME="merged_src_out.sh";
