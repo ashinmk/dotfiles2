@@ -3,16 +3,15 @@
 
 export PATH="${HOME}/Scripts/bin:${HOME}/.toolbox/bin:$PATH"
 
-source "$HOME/.dotconfig/early-env-setup/zsh-opts.sh";
+for earlyInitFile in $HOME/.dotconfig/early-env-setup/*.sh; do
+    source "$earlyInitFile";
+done
 
 source "$HOME/.zinit/bin/zinit.zsh"
 autoload -Uz _zinit
 (( ${+_comps} )) && _comps[zinit]=_zinit
 
 ### End of Zinit's installer chunk
-
-source "$HOME/.dotconfig/early-env-setup/brew-env-setup.sh";
-source "$HOME/.dotconfig/early-env-setup/aliases.sh";
 
 for initFile in $HOME/.dotconfig/*/init.eager.sh; do
     source "$initFile"
