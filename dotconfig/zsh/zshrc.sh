@@ -1,5 +1,8 @@
 # Uncomment to benchmark load-time
-#zmodload zsh/zprof
+#SHOULD_PROFILE_ZSH_STARTUP="true";
+if [[ ! -z "$SHOULD_PROFILE_ZSH_STARTUP" ]]; then
+    zmodload zsh/zprof;
+fi;
 
 export PATH="${HOME}/Scripts/bin:${HOME}/.toolbox/bin:$PATH"
 
@@ -29,5 +32,6 @@ zinit light-mode for pick="powerlevel10k.zsh-theme" src="$DOTCONFIG_DIR/p10k/p10
 
 zinit wait lucid light-mode for id-as="lazy-init" pick="lazy-init-all.sh" "$DOTCONFIG_DIR/zsh";
 
-# Uncomment to benchmark load-time
-#zprof
+if [[ ! -z "$SHOULD_PROFILE_ZSH_STARTUP" ]]; then
+    zprof;
+fi;
