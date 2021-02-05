@@ -49,7 +49,7 @@ bindkey '\egr' fzf-git-rebase-interactive;
 fzf-git-diff() {
     local selectedFile;
     local gitRootDir=$(git rev-parse --show-toplevel);
-    selectedFile=$(git diff --name-only | fzf --preview 'git diff '${gitRootDir}'/{}');
+    selectedFile=$(git diff --name-only | fzf --preview 'git diff --color '${gitRootDir}'/{}');
     [[ -z "$selectedFile" ]] || BUFFER="git diff \"${gitRootDir}/${selectedFile}\"";
     zle autosuggest-clear && zle accept-line;
 }
@@ -70,7 +70,7 @@ fzf-git-add() {
     local gitRootDir=$(git rev-parse --show-toplevel);
     local modifiedFiles=$(git diff --name-only);
     local untrackedPaths=$(git ls-files $gitRootDir --exclude-standard --others --full-name);
-    local selectedFiles=$(echo "${modifiedFiles}\n${untrackedPaths}" | rg -N . | fzf -m --reverse --preview 'git diff '${gitRootDir}'/{}');
+    local selectedFiles=$(echo "${modifiedFiles}\n${untrackedPaths}" | rg -N . | fzf -m --reverse --preview 'git diff --color '${gitRootDir}'/{}');
     if [[ ! -z "$selectedFiles" ]]; then
         selectedFiles=$(echo $selectedFiles | sd '^(.+)' "$gitRootDir/\$1" | sd '\n' ' ');
         BUFFER=" git add ${selectedFiles}";
@@ -83,7 +83,7 @@ bindkey '\ega' fzf-git-add;
 
 fzf-git-unstage() {
     local gitRootDir=$(git rev-parse --show-toplevel);
-    local selectedFiles=$(git diff --cached --name-only | fzf -m --reverse --preview 'git diff '${gitRootDir}'/{}');
+    local selectedFiles=$(git diff --cached --name-only | fzf -m --reverse --preview 'git diff --color '${gitRootDir}'/{}');
     if [[ ! -z "$selectedFiles" ]]; then
         selectedFiles=$(echo $selectedFiles | sd '^(.+)' "$gitRootDir/\$1" | sd '\n' ' ');
         BUFFER=" git restore --staged ${selectedFiles}";
