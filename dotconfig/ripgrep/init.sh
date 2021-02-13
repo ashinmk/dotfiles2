@@ -13,4 +13,4 @@ function zle_search_with_fzf_rg() {
 }
 
 zle -N zle_search_with_fzf_rg;
-bindkey '\ef' zle_search_with_fzf_rg;
+bindkey '^f' zle_search_with_fzf_rg;
