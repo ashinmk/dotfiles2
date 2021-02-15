@@ -70,7 +70,7 @@ zle-fzf-cr() {
     if [[ "$numPackages" -eq 1 ]]; then
         BUFFER='cr --include "'$packageRef'"';
     elif [[ -z "$cmd" ]]; then
-        BUFFER='cr --include "'$packageRef'" --new-revision';
+        BUFFER='cr --include "'$packageRef'" --new-review';
     else
         BUFFER='cr --include "'$packageRef'"';
     fi;
