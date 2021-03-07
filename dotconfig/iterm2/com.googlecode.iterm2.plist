@@ -989,6 +989,46 @@
 					<key>regex</key>
 					<string>BUILD FAILED</string>
 				</dict>
+				<dict>
+					<key>action</key>
+					<string>PasswordTrigger</string>
+					<key>parameter</key>
+					<string>gauthamw - Account</string>
+					<key>partial</key>
+					<true/>
+					<key>regex</key>
+					<string>Password for gauthamw@ANT.AMAZON.COM</string>
+				</dict>
+				<dict>
+					<key>action</key>
+					<string>PasswordTrigger</string>
+					<key>parameter</key>
+					<string>gauthamw - Midway</string>
+					<key>partial</key>
+					<true/>
+					<key>regex</key>
+					<string>PIN for gauthamw:</string>
+				</dict>
+				<dict>
+					<key>action</key>
+					<string>PasswordTrigger</string>
+					<key>parameter</key>
+					<string>gauthamw - Account</string>
+					<key>partial</key>
+					<true/>
+					<key>regex</key>
+					<string>gauthamw@ANT.AMAZON.COM's password</string>
+				</dict>
+				<dict>
+					<key>action</key>
+					<string>PasswordTrigger</string>
+					<key>parameter</key>
+					<string>gauthamw - Account</string>
+					<key>partial</key>
+					<true/>
+					<key>regex</key>
+					<string>^Password:</string>
+				</dict>
 			</array>
 			<key>Unlimited Scrollback</key>
 			<true/>
