@@ -26,6 +26,7 @@
     ],
     "FMT Pipelines": [
         "https://pipelines.amazon.com/pipelines/AlmanacService",
+        "https://pipelines.amazon.com/pipelines/CombeeService",
         "https://pipelines.amazon.com/pipelines/DRAXService",
         "https://pipelines.amazon.com/pipelines/DRAXServiceBastionInfrastructure",
         "https://pipelines.amazon.com/pipelines/DRAXServiceInfrastructure",
