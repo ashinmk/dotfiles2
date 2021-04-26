@@ -4,8 +4,10 @@ function nds() {
 
 function auth() {
     if [[ "$HOST" =~ "^dev-dsk.*" ]]; then
-        kinit -f && mwinit -o && touch "/tmp/.recently-authorized";
+        kinit -f -l 86400 && touch "/tmp/.recently-authorized";
     else
-        kinit -f && mwinit --aea && ssh-add && touch "/tmp/.recently-authorized";
+        kinit -f -l 86400 && mwinit --aea && ssh-add && touch "/tmp/.recently-authorized";
+        rsync -aquv ~/.midway gauthamw.aka.corp.amazon.com:/home/gauthamw/ &;
+        rsync -aquv /tmp/.recently-authorized gauthamw.aka.corp.amazon.com:/home/gauthamw/ &;
     fi;
 }
