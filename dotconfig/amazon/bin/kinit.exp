@@ -1,0 +1,30 @@
+#!/usr/bin/expect -f
+# Based on https://code.amazon.com/packages/ArchitjHome/blobs/mainline/--/mwinit.exp , updated to read the PIN from Keychain
+# If you're getting `operation not permitted` when running this on a mac, remember to run `xattr -d com.apple.quarantine $FILE`
+
+set force_conservative 0  ;# set to 1 to force conservative mode even if cript wasn't run conservatively originally
+if {$force_conservative} {
+	set send_slow {1 .1}
+	proc send {ignore arg} {
+		sleep .1
+		exp_send -s -- $arg
+	}
+}
+
+log_user 0 ;# Suppress outputs
+
+set user_name [lindex $argv 0]
+
+;# Extract password from Keychain
+set raw_password [exec security find-generic-password -l "NoMAD" -g 2>@1]
+regexp {password:\s+"([^"]+)"} $raw_password ignore password
+
+set timeout -1
+
+spawn kinit -f -l 86400
+
+match_max 100000
+expect -exact "$user_name@ANT.AMAZON.COM's password:"
+send -- "$password\r"
+puts "Kerberos Auth Succeeded"
+interact
