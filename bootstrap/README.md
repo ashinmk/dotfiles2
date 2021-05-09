@@ -53,14 +53,16 @@ Note that I have stopped using Homebrew Cask in favour of MAS and direct install
 - Hammerspoon
 - IINA
 - IntelliJ IDEA
+- iStat Menus
 - iTerm2
+- Kap
 - Karabiner Elements
 - Pocket (Personal Use; Avoid Office Data)
 - Postman
 - Spotify
+- Todoist (Personal Use; Avoid Office Data)
 - Vanilla
 - VS Code
-- Todoist (Personal Use; Avoid Office Data)
 
 ### Workspace Setup
 If you are using a Mac, you'll need a case-sensitive drive for development. Run `setup-case-sensitive-volumes-for-mac.sh` to setup a workspace in `/Volumes/workplace` or `~/ws`.
@@ -68,7 +70,7 @@ If you are using a Mac, you'll need a case-sensitive drive for development. Run 
 If you're setting it up on a dev-desktop, a new empty dir in `~/ws` will do.
 
 ## Config Setup
-> This depends onc app setup being complete. Do not start here.
+> This depends on app setup being complete. Do not start here.
 
 The dotconfig dir which hosts all the dotfiles will be symlinked to $HOME/.dotconfig. Any existing link to this dir will be removed. This will serve as the entry point to the config files. This allows you to keep your repo anywhere but still have a static reference for your scripts.
 
