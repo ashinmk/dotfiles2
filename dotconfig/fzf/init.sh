@@ -47,10 +47,13 @@ fzf-cd() {
         zle redisplay
         return 0
     fi
-    cd "$dir"
-    local return_value=$?
-    zle fzf-redraw-prompt
-    return $return_value
+    zle push-line # Clear buffer. Auto-restored on next prompt.
+    BUFFER="cd ${(q)dir}"
+    zle accept-line
+    local ret=$?
+    unset dir # ensure this doesn't end up appearing in prompt expansion
+    zle reset-prompt
+    return $ret
 }
 
 # ALT-W - cd into $BRAZIL_WS_DIR
