@@ -6,9 +6,9 @@ function auth() {
     if [[ "$HOST" =~ "^dev-dsk.*" ]]; then
         kinit -f -l 86400 && touch "/tmp/.recently-authorized";
     else
-        kinit.exp gauthamw && mwinit.exp gauthamw && (ssh-add > /dev/null) && touch "/tmp/.recently-authorized";
-        (rsync -aquv ~/.midway gauthamw.aka.corp.amazon.com:/home/gauthamw/ &) > /dev/null;
-        (print_password | (ssh -q gauthamw.aka.corp.amazon.com "kinit -f -l 86400  && touch \"/tmp/.recently-authorized\"" > /dev/null) &) > /dev/null;
+        kinit.exp $USER && mwinit.exp $USER && (ssh-add > /dev/null) && touch "/tmp/.recently-authorized";
+        (rsync -aquv ~/.midway $USER.aka.corp.amazon.com:/home/$USER/ &) > /dev/null;
+        (print_password | (ssh -q $USER.aka.corp.amazon.com "kinit -f -l 86400  && touch \"/tmp/.recently-authorized\"" > /dev/null) &) > /dev/null;
     fi;
 }
 
