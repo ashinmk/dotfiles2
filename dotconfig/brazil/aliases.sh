@@ -1,13 +1,22 @@
 # $1 - Version-set
-# $2-... - Packages
+# $2 - Comma-separated Packages
 function print-dependencies() {
-    brazil vs printdependencies --versionset "$1" --packages "${@:2}" --consumers
+    brazil vs printdependencies --versionset "$1" --packages "$2" --consumers;
 }
 
+# $1 - Version-set
+# $2 - Comma-separated Packages
 function print-dependency-graph() {
+    local versionSet="$1";
+    local packages="$2";
+
+    local graphDir="$HOME/Documents/brazil-graphs";
+    mkdir -p "$graphDir";
+
     local dotFile="/tmp/${RANDOM}.dot";
-    brazil vs printdependencies --versionset "$1" --packages "${@:2}" --consumers --format dot > "$dotFile";
-    local pngFile="$HOME/Desktop/${RANDOM}.png";
+    (brazil vs printdependencies --versionset "$versionSet" --packages "$packages" --consumers --format dot > "$dotFile") || return;
+    local pngFile="BDG - ${versionSet:s/\//-} - $packages";
+    pngFile="$graphDir/$pngFile.png";
     dot -Tpng "$dotFile" > "$pngFile" && open "$pngFile";
 }
 
