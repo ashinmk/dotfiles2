@@ -1,6 +1,3 @@
-[user]
-	email = gauthamw@amazon.com
-	name = Gautham R Warrier
 [color]
 	ui = true
 [core]
@@ -20,3 +17,5 @@
 	cp = cherry-pick
 [pull]
 	rebase = true
+[include]
+    path = ~/.config/git/.gitconfig.user

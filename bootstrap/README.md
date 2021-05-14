@@ -6,6 +6,8 @@
   - [Workspace Setup](#workspace-setup)
 - [Config Setup](#config-setup)
   - [MacOS Keyboard Layout](#macos-keyboard-layout)
+  - [Personalization](#personalization)
+    - [Git Setup](#git-setup)
 
 ## Introduction
 While the repo calls itself a Dotfile repo, it actually consists of most of what I need to get a laptop up and running. This setup has been split into two parts -
@@ -78,3 +80,10 @@ As part of installation, app-level bootstrap files (`bootstrap.sh`) inside dotco
 
 ### MacOS Keyboard Layout
 The default MacOS keyboard layout has special character bindings for most Alt+'char' keys. This removes a lot of useful keybindings in terminal. The attached alternative keyboard layout removes them. Run `setup_keyboard_layout.sh` to set it up. Logout & Login and then change Input Source in Settings to x_layout. It'll show up in the "Others" section.
+
+
+### Personalization
+While I don't have a perfect system in place to separate good-to-have defaults from my personal customizations, this is a start.
+
+#### Git Setup
+Any user-specific config should go in gitconfig.$USER instead of the global gitconfig.
