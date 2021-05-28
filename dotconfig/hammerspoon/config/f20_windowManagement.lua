@@ -21,7 +21,25 @@ customBindings = {
     prevDisplay = false
 }
 
+local invertDisplayOrder = false; -- Needed in case monitor alignment ends up being different in the system.
+
 spoon.Lunette:bindHotkeys(customBindings)
+if (invertDisplayOrder) then
+    f20:bind({"shift"}, 'left', function()
+        spoon.Lunette:exec('nextDisplay')
+    end);
+    f20:bind({"shift"}, 'right', function()
+        spoon.Lunette:exec('prevDisplay')
+    end);
+else
+    f20:bind({"shift"}, 'left', function()
+        spoon.Lunette:exec('prevDisplay')
+    end);
+    f20:bind({"shift"}, 'right', function()
+        spoon.Lunette:exec('nextDisplay')
+    end);
+end
+
 f20:bind({'alt'}, 'left', function()
     spoon.Lunette:exec('leftHalf')
 end)
@@ -33,12 +51,6 @@ f20:bind({'alt'}, 'up', function()
 end)
 f20:bind({'alt'}, 'down', function()
     spoon.Lunette:exec('bottomHalf')
-end)
-f20:bind({"shift"}, 'left', function()
-    spoon.Lunette:exec('nextDisplay')
-end)
-f20:bind({"shift"}, 'right', function()
-    spoon.Lunette:exec('prevDisplay')
 end)
 f20:bind({}, 'space', function()
     hs.window.focusedWindow():toggleFullScreen();
