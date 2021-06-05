@@ -86,7 +86,7 @@ local folder_bindings = {
         }
     },
     {
-        folder = '3-Eventually',
+        folder = '3-Follow Up',
         parentFolder = 'Inbox',
         bindings = {
             {
@@ -140,12 +140,18 @@ local folder_bindings = {
         }
     },
     {
-        folder = '6-CR to me',
+        folder = '6-Some Day',
         parentFolder = 'Inbox',
         bindings = {
             {
                 action = 'navigate_to',
                 mods = {"alt", "shift"},
+                key = '6',
+                f20 = false
+            },
+            {
+                action = 'move_message_to_folder',
+                mods = {"alt"},
                 key = '6',
                 f20 = false
             }
