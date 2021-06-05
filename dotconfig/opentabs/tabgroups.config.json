@@ -33,6 +33,7 @@
         "https://pipelines.amazon.com/pipelines/DRAXServiceSinglePassInfrastructure",
         "https://pipelines.amazon.com/pipelines/DRAXServiceVpcInfrastructure",
         "https://pipelines.amazon.com/pipelines/FMTBUDSLambda",
+        "https://pipelines.amazon.com/pipelines/FMTBUDSLambdaCDK",
         "https://pipelines.amazon.com/pipelines/FMTBUDSVpcInfrastructure",
         "https://pipelines.amazon.com/pipelines/GazetteService",
         "https://pipelines.amazon.com/pipelines/PidgeottoServiceLambda",
