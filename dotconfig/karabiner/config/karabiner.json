@@ -82,6 +82,11 @@
                                         ]
                                     }
                                 },
+                                "to_if_alone": [
+                                    {
+                                        "key_code": "fn"
+                                    }
+                                ],
                                 "to": [
                                     {
                                         "set_variable": {
@@ -92,6 +97,7 @@
                                     {
                                         "key_code": "f20"
                                     }
+
                                 ],
                                 "to_after_key_up": [
                                     {
