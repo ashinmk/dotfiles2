@@ -13,17 +13,12 @@ bat exa fd fzf git-delta ripgrep jq miller micro dos2unix sd \
 bandwhich dog ifstat hyperfine procs \
 graphviz pandoc tesseract;
 
-echo "Installing NVM";
+echo "Installing Volta";
+curl https://get.volta.sh | bash
 
-NVM_VERSION_TO_INSTALL="v0.37.2";
-curl -o- "https://raw.githubusercontent.com/nvm-sh/nvm/$NVM_VERSION_TO_INSTALL/install.sh" | bash
+echo "Installing Node";
+volta install node;
 
-## Setup NVM for use right now
-export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")";
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh";
-
-NODE_VERSION_TO_INSTALL="v12.19.0";
-nvm install "$NODE_VERSION_TO_INSTALL";
 npm install -g catj;
 
 # Amazon Install
