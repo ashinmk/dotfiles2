@@ -43,6 +43,21 @@ fzf-brazil-build() {
 zle -N fzf-brazil-build;
 bindkey '\ebb' fzf-brazil-build;
 
+fzf-brazil-build-single-test() {
+    if [[ ! -f "build.xml" ]]; then
+        echo "No build.xml found";
+    else
+        local testClass=$(fd '.+java' tst | sed 's-^tst/--g' | sed 's-/-.-g' | sed 's/.java//g' | fzf);
+        if [[ ! -z "$testClass" ]]; then
+            BUFFER="bb single-test -DtestClass=$testClass";
+            zle autosuggest-clear;
+            zle accept-line;
+        fi;
+    fi;
+}
+
+zle -N fzf-brazil-build-single-test;
+bindkey '\ebt' fzf-brazil-build-single-test;
 
 fzf-brazil-remove-package() {
     local currentWS="$BRAZIL_WS_DIR/"$(pwd | sed "s:$BRAZIL_WS_DIR/::g" | cut -d '/' -f 1);
