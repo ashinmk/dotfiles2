@@ -27,6 +27,23 @@ fzf-brazil-add-package() {
 zle -N fzf-brazil-add-package;
 bindkey '\eba' fzf-brazil-add-package;
 
+fzf-brazil-build() {
+    if [[ ! -f "build.xml" ]]; then
+        echo "No build.xml found";
+    else
+        local target=$(cat build.xml | rg 'target.+name="[^"]+"' -o | rg 'name=".+' -o | cut -d '"' -f 2 | fzf);
+        if [[ ! -z "$target" ]]; then
+            BUFFER="bb $target";
+            zle autosuggest-clear;
+            zle accept-line;
+        fi;
+    fi;
+}
+
+zle -N fzf-brazil-build;
+bindkey '\ebb' fzf-brazil-build;
+
+
 fzf-brazil-remove-package() {
     local currentWS="$BRAZIL_WS_DIR/"$(pwd | sed "s:$BRAZIL_WS_DIR/::g" | cut -d '/' -f 1);
     local packageName=$(cat $currentWS/packageInfo | tr -d '\n' | rg 'packages = .+' -o | cut -d '{' -f 2 | cut -d '}' -f 1 | tr -d ' ' | sed 's/=.;*/\n/g' \
