@@ -21,6 +21,13 @@ volta install node;
 
 npm install -g catj;
 
+echo "Installing SDKMan";
+curl -s "https://get.sdkman.io" | bash;
+
+echo "Installing JDK15";
+source "$HOME/.sdkman/bin/sdkman-init.sh";
+sdk install java 15.0.1-amzn;
+
 # Amazon Install
 if type "mwinit" > /dev/null; then
     repoDir="${0:A:h:h}";
