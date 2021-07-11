@@ -11,7 +11,7 @@ fzf-file-select() {
     fi;
 }
 zle -N fzf-file-select;
-bindkey '\et' fzf-file-select;
+bindkey '\ef' fzf-file-select;
 
 export FZF_DEFAULT_COMMAND="fd"
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
