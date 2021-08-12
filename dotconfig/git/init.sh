@@ -123,3 +123,21 @@ zle-git-clean() {
 
 zle -N zle-git-clean;
 bindkey '\egCC' zle-git-clean;  ## Make it harder for typos.
+
+zle-git-commit() {
+    is_in_git_repo || return;
+    BUFFER="git commit";
+    zle autosuggest-clear && zle accept-line;
+}
+
+zle -N zle-git-commit;
+bindkey '\egc' zle-git-commit;
+
+zle-git-commit-amend() {
+    is_in_git_repo || return;
+    BUFFER="git commit --amend";
+    zle autosuggest-clear && zle accept-line;
+}
+
+zle -N zle-git-commit-amend;
+bindkey '\egm' zle-git-commit-amend;
