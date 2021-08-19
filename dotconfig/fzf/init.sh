@@ -1,17 +1,17 @@
-zinit wait lucid depth="1" src="shell/key-bindings.zsh" for junegunn/fzf;
+zinit depth="1" src="shell/key-bindings.zsh" for junegunn/fzf;
 
 bindkey -r '^T';    # Remove default FZF File Select
-[ -f "${current_dir}/catj-fzf.zsh" ] && source "${current_dir}/catj-fzf.zsh"
+[ -f "$DOTCONFIG_DIR/fzf/catj-fzf.zsh" ] && source "$DOTCONFIG_DIR/fzf/catj-fzf.zsh";
 
 fzf-file-select() {
     local out file key
     out=$(fd -t f | fzf --bind 'alt-e:execute-silent('$EDITOR' {})+abort,alt-v:execute-silent(code {})+abort');
     if [[ ! -z "$out" ]]; then
-        BUFFER="${LBUFFER}$out${RBUFFER}";
+        LBUFFER="${LBUFFER}$out";
     fi;
 }
 zle -N fzf-file-select;
-bindkey '\ef' fzf-file-select;
+bindkey '^t' fzf-file-select;
 
 export FZF_DEFAULT_COMMAND="fd"
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
