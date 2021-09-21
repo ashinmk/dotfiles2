@@ -11,6 +11,7 @@ brew install \
 zsh git awk coreutils findutils gnu-sed wget \
 bat exa fd fzf git-delta ripgrep jq miller micro dos2unix sd \
 bandwhich dog ifstat hyperfine procs \
+ddcctl \
 graphviz pandoc tesseract;
 
 echo "Installing Volta";

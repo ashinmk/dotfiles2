@@ -9,6 +9,7 @@ f20 = require 'f20';
 
 require 'f20_general'
 require 'f20_windowManagement'
+require 'f20_displayControl'
 require 'f20_outlook'
 require 'f20_volumeControl'
 require 'f20_alfredHelpers';
