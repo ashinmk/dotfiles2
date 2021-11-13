@@ -56,21 +56,22 @@ fzf-cd() {
     return $ret
 }
 
-# ALT-W - cd into $BRAZIL_WS_DIR
+# ALT-w - cd into packages in current WS
+fzf-cd-ws-pkg-widget() {
+    local currentWS="$BRAZIL_WS_DIR/"$(pwd | sed "s:$BRAZIL_WS_DIR/::g" | cut -d '/' -f 1);
+    fzf-cd "fd -d 1 -t d . $currentWS/src"
+    return $?
+}
+zle -N fzf-cd-ws-pkg-widget
+bindkey '\eW' fzf-cd-ws-pkg-widget
+
+# ALT-W - cd into packages across WSes
 fzf-cd-ws-widget() {
     fzf-cd "fd -d 1 -t d . $BRAZIL_WS_DIR/*/src"
     return $?
 }
 zle -N fzf-cd-ws-widget
 bindkey '\ew' fzf-cd-ws-widget
-
-# ALT-W - cd into Candybar
-fzf-cd-candybar-widget() {
-    fzf-cd "fd -t d -d 1 . $HOME/Candybar"
-    return $?
-}
-zle -N fzf-cd-candybar-widget
-bindkey '\eW' fzf-cd-candybar-widget
 
 # ALT-c - cd inside current dir
 fzf-cd-pwd-widget() {
