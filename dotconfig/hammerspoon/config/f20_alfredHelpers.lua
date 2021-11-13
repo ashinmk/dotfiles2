@@ -1,4 +1,4 @@
-function triggerAlfredWorkflow(trigger, workflow, arg) 
+function triggerAlfredWorkflow(trigger, workflow, arg)
     local script = 'tell application id "com.runningwithcrayons.Alfred" to run trigger "' .. trigger .. '" in workflow "' .. workflow .. '"';
     if arg ~= nil then
         script = script .. 'with argument "' .. arg .. '"';
@@ -77,6 +77,13 @@ config.alfredTriggers = {
         arg = 'vs-code',
         workflow = 'dev.gauthamw.open-stuff',
         f20Shortcut = 'v'
+    },
+    {
+        trigger = 'open-app',
+        arg = 'vs-code-notes',
+        workflow = 'dev.gauthamw.open-stuff',
+        f20Shortcut = 'v',
+        f20Modifiers = {'shift'}
     },
     {
         trigger = 'spotify',
