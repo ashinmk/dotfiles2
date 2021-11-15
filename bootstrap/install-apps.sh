@@ -14,6 +14,23 @@ bandwhich dog ifstat hyperfine procs \
 ddcctl \
 graphviz pandoc tesseract;
 
+# Install Essential Applications
+brew install --cask 1password alfred arq contexts google-drive hammerspoon iina istat-menus iterm2 kap karabiner-elements postman rescuetime slack spotify vanilla visual-studio-code;
+
+mas install 1091189122; # Bear
+mas install 1470584107; # Dato
+mas install 1485052491; # Dropzone
+mas install 405399194; # Kindle
+mas install 973213640; # MSG Viewer For Outlook
+mas install 568494494; # Pocket
+mas install 425424353; # The Unarchiver
+mas install 585829637; # Todoist
+mas install 957734279; # Toggl
+
+
+# Nerd Fonts for terminal rendering
+brew tap homebrew/cask-fonts && brew install --cask font-fira-code-nerd-font;
+
 echo "Installing Volta";
 curl https://get.volta.sh | bash
 
