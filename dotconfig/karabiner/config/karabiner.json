@@ -1,7 +1,7 @@
 {
     "global": {
         "check_for_updates_on_startup": true,
-        "show_in_menu_bar": true,
+        "show_in_menu_bar": false,
         "show_profile_name_in_menu_bar": false
     },
     "profiles": [
@@ -19,8 +19,12 @@
                         "description": "Forward-Delete",
                         "manipulators": [
                             {
-                                "type": "basic",
                                 "from": {
+                                    "modifiers": {
+                                        "optional": [
+                                            "any"
+                                        ]
+                                    },
                                     "simultaneous": [
                                         {
                                             "key_code": "equal_sign"
@@ -28,18 +32,14 @@
                                         {
                                             "key_code": "delete_or_backspace"
                                         }
-                                    ],
-                                    "modifiers": {
-                                        "optional": [
-                                            "any"
-                                        ]
-                                    }
+                                    ]
                                 },
                                 "to": [
                                     {
                                         "key_code": "delete_forward"
                                     }
-                                ]
+                                ],
+                                "type": "basic"
                             }
                         ]
                     },
@@ -58,12 +58,12 @@
                                 "to": [
                                     {
                                         "key_code": "right_shift",
+                                        "lazy": true,
                                         "modifiers": [
                                             "right_command",
                                             "right_control",
                                             "right_option"
-                                        ],
-                                        "lazy": true
+                                        ]
                                     }
                                 ],
                                 "type": "basic"
@@ -82,11 +82,6 @@
                                         ]
                                     }
                                 },
-                                "to_if_alone": [
-                                    {
-                                        "key_code": "fn"
-                                    }
-                                ],
                                 "to": [
                                     {
                                         "set_variable": {
@@ -97,7 +92,6 @@
                                     {
                                         "key_code": "f20"
                                     }
-
                                 ],
                                 "to_after_key_up": [
                                     {
@@ -105,6 +99,11 @@
                                             "name": "fn_key_held_down",
                                             "value": 0
                                         }
+                                    }
+                                ],
+                                "to_if_alone": [
+                                    {
+                                        "key_code": "fn"
                                     }
                                 ],
                                 "type": "basic"
