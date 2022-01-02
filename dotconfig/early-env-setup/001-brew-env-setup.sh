@@ -5,8 +5,8 @@ function setup_brew_env_file() {
     local pasteExec;
     local brewGnuSearchPath;
     if [[ "$OSTYPE" == darwin* ]]; then
-        brewExec="/usr/local/bin/brew";
-        brewGnuSearchPath="/usr/local/opt";
+        brewExec="/opt/homebrew/bin/brew";
+        brewGnuSearchPath="/opt/homebrew/opt";
         pasteExec="$brewGnuSearchPath/coreutils/libexec/gnubin/paste";
     else
         brewExec="/home/linuxbrew/.linuxbrew/bin/brew";

@@ -10,7 +10,7 @@ for earlyInitFile in $HOME/.dotconfig/early-env-setup/*.sh; do
     source "$earlyInitFile";
 done
 
-source "$HOME/.zinit/bin/zinit.zsh"
+source "${HOME}/.local/share/zinit/zinit.git/zinit.zsh"
 autoload -Uz _zinit
 (( ${+_comps} )) && _comps[zinit]=_zinit
 
