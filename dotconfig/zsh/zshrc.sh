@@ -32,6 +32,8 @@ zinit light-mode for pick="powerlevel10k.zsh-theme" src="$DOTCONFIG_DIR/p10k/p10
 
 zinit wait lucid light-mode for id-as="lazy-init" pick="lazy-init-all.sh" "$DOTCONFIG_DIR/zsh";
 
+export JAVA_TOOLS_OPTIONS="-Dlog4j2.formatMsgNoLookups=true"
+
 if [[ ! -z "$SHOULD_PROFILE_ZSH_STARTUP" ]]; then
     zprof;
 fi;
