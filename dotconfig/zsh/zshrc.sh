@@ -10,7 +10,11 @@ for earlyInitFile in $HOME/.dotconfig/early-env-setup/*.sh; do
     source "$earlyInitFile";
 done
 
-source "${HOME}/.local/share/zinit/zinit.git/zinit.zsh"
+if [[ "$OSTYPE" == "darwin"* ]]; then
+    source "${HOME}/.local/share/zinit/zinit.git/zinit.zsh";
+else
+    source "$HOME/.zinit/bin/zinit.zsh";
+fi;
 autoload -Uz _zinit
 (( ${+_comps} )) && _comps[zinit]=_zinit
 
