@@ -1,6 +1,15 @@
 local micMuteToggleAlert = nil;
 local outputMuteToggleAlert = nil;
 
+local headPhoneIdentifier = "WH-1000XM3";
+local builtInInputIdentifier = "MacBook Pro Microphone";
+local builtInOutputIdentifier = "MacBook Pro Speakers";
+
+local isMonterey = false;
+if string.match(hs.host.operatingSystemVersionString(), "Version 12") then
+    isMonterey = true;
+end
+
 -- Input Mute Toggle
 f20:bind({}, 'z', function()
     if micMuteToggleAlert then
@@ -8,8 +17,27 @@ f20:bind({}, 'z', function()
         micMuteToggleAlert = nil;
     end
     local inputDevice = hs.audiodevice.defaultInputDevice();
+
+    -- Hack for Bluetooth Devices on Monterey
+    -- Ref https://apple.stackexchange.com/questions/430038/macos-monterey-bluetooth-mic-issues-when-mute-adjust-input-volume
+    local isNotInbuiltDevice = (inputDevice:name() ~= builtInInputIdentifier);
+    if (isMonterey and isNotInbuiltDevice) then
+        local isMuted = inputDevice:inputVolume() == 0;
+
+        if isMuted then
+            alertMessage = "Mic Un-muted";
+            inputDevice:setInputVolume(30);
+        else
+            alertMessage = "Mic Muted";
+            inputDevice:setInputVolume(0);
+        end
+        micMuteToggleAlert = hs.alert.show(alertMessage);
+        return;
+    end
+
     local isMuted = inputDevice:inputMuted();
     local alertMessage;
+
     if isMuted then
         alertMessage = "Mic Un-muted";
         inputDevice:setInputMuted(false);
@@ -38,10 +66,6 @@ f20:bind({"shift"}, 'z', function()
     end
     outputMuteToggleAlert = hs.alert.show(alertMessage);
 end)
-
-local headPhoneIdentifier = "WH-1000XM3";
-local builtInInputIdentifier = "MacBook Pro Microphone";
-local builtInOutputIdentifier = "MacBook Pro Speakers";
 
 -- Change Audio Device to Headphone
 function changeAudioDeviceToHeadphone()
@@ -84,14 +108,14 @@ function getDeviceInfo(device)
         if device:inputMuted() then
             deviceInfo = deviceInfo .. " [Muted]";
         else
-            deviceInfo = deviceInfo  .. " [" .. math.floor(device:inputVolume()) .. "]";
+            deviceInfo = deviceInfo .. " [" .. math.floor(device:inputVolume()) .. "]";
         end
     else
         deviceInfo = "Output Device: " .. device:name();
         if device:outputMuted() then
             deviceInfo = deviceInfo .. " [Muted]";
         else
-            deviceInfo = deviceInfo  .. " [" .. math.floor(device:outputVolume()) .. "]";
+            deviceInfo = deviceInfo .. " [" .. math.floor(device:outputVolume()) .. "]";
         end
     end
     return deviceInfo;
@@ -99,5 +123,6 @@ end
 
 -- Sound Status
 f20:bind({"cmd"}, 'z', function()
-    hs.alert.show(getDeviceInfo(hs.audiodevice.defaultInputDevice()) .. "\n" .. getDeviceInfo(hs.audiodevice.defaultOutputDevice()));
+    hs.alert.show(getDeviceInfo(hs.audiodevice.defaultInputDevice()) .. "\n" ..
+                      getDeviceInfo(hs.audiodevice.defaultOutputDevice()));
 end)
