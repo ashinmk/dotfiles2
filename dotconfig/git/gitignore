@@ -3,3 +3,4 @@
 .DS_Store
 build
 annotation-generated-src
+.vscode

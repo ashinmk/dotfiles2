@@ -19,3 +19,5 @@
 	rebase = true
 [include]
     path = ~/.config/git/.gitconfig.user
+[init]
+	defaultBranch = mainline

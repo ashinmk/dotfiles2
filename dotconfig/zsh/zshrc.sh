@@ -32,6 +32,10 @@ for aliasFile in $DOTCONFIG_DIR/*/aliases.sh; do
     source "$aliasFile"
 done
 
+if [[ -f $HOME/init.local.zsh ]]; then
+    source "$HOME/init.local.zsh";
+fi;
+
 zinit light-mode for pick="powerlevel10k.zsh-theme" src="$DOTCONFIG_DIR/p10k/p10k.zsh" depth="1" romkatv/powerlevel10k;
 
 zinit wait lucid light-mode for id-as="lazy-init" pick="lazy-init-all.sh" "$DOTCONFIG_DIR/zsh";
